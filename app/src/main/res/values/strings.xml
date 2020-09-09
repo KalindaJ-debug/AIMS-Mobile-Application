@@ -1,9 +1,82 @@
 <resources>
-    <string name="app_name">Java Mobile Application</string>
-    <string name="crop_name">Crop</string>
-    <string name="crop_category">Crop Category</string>
+    <string name="app_name">AIMS</string>
+
+<!--    Data Entry Activity Strings-->
+
+    <string name="crop_name">Select Crop Name</string>
+    <string name="crop_category">Select Crop Category</string>
+    <string name="crop_variety">Select Crop Variety</string>
     <string name="cultivated_land_extent">Cultivated Land Extent</string>
     <string name="district">District</string>
     <string name="province">Province</string>
     <string name="land_address">Land Address</string>
+    <string name="aims_title">AIMS</string>
+    <string name="dataEntry_title">Enter Cultivated Crop Data</string>
+    <string name="data_entry_image">data entry image</string>
+    <string name="land_extent">Land Extent (ha)</string>
+    <string name="reset">Reset</string>
+    <string name="submit">Submit</string>
+    <string name="hectares">   (ha)</string>
+
+    <!--    Data Entry Activity String Arrays-->
+
+<!--    Crop Categories-->
+    <string-array name="crop_categories">
+        <item>Vegetables</item>
+        <item>Paddy</item>
+        <item>Other Field Crops</item>
+        <item>Fruits</item>
+        <item>Roots and Tubes</item>
+        <item>Leafy Vegetables</item>
+    </string-array>
+
+<!--    Crop Names-->
+<!--    Fruits-->
+    <string-array name="crop_fruits">
+        <item>Amberella</item>
+        <item>Banana</item>
+        <item>Mango</item>
+        <item>Strawberry</item>
+        <item>Pineapple</item>
+        <item>Papaya</item>
+        <item>Woodapple</item>
+        <item>Star Fruit</item>
+        <item>Rambutan</item>
+    </string-array>
+<!--    Crop Vegetables-->
+    <string-array name="crop_vegetables">
+        <item>Tomato</item>
+        <item>Eggplant</item>
+        <item>Ladies Fingers</item>
+        <item>Pumpkin</item>
+        <item>Leeks</item>
+        <item>Snake Gourd</item>
+    </string-array>
+<!--    Other Field Crops-->
+    <string-array name="crop_ofc">
+        <item>Red Onions</item>
+        <item>Chilli</item>
+        <item>Black Gram</item>
+        <item>Soya Bean</item>
+        <item>Cow Pea</item>
+        <item>Gingerly</item>
+    </string-array>
+<!--    Roots and Tubes-->
+    <string-array name="crops_roots">
+        <item>Sweet Potato</item>
+        <item>Potato</item>
+        <item>Cassava</item>
+        <item>Taro</item>
+        <item>Yams</item>
+    </string-array>
+<!--    Leafy Vegetables-->
+    <string-array name="crop_leafy">
+        <item>Kankun</item>
+        <item>Gotukola</item>
+        <item>Spinach</item>
+        <item>Kale</item>
+        <item>Romaine Lettuce</item>
+    </string-array>
+
+<!--    Crop Varieties-->
 </resources>
