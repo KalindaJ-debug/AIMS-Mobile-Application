@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Java Mobile Application</string>
+    <string name="crop_name">Crop</string>
+    <string name="crop_category">Crop Category</string>
+    <string name="cultivated_land_extent">Cultivated Land Extent</string>
+    <string name="district">District</string>
+    <string name="province">Province</string>
+    <string name="land_address">Land Address</string>
 </resources>
