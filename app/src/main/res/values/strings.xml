@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">AIMS</string>
 
-<!--    Data Entry Activity Strings-->
+    <!--    Data Entry Activity Strings-->
 
     <string name="crop_name">Select Crop Name</string>
     <string name="crop_category">Select Crop Category</string>
@@ -18,10 +18,13 @@
     <string name="submit">Submit</string>
     <string name="hectares">   (ha)</string>
     <string name="next">Next</string>
+    <string name="landTitle">Enter Cultivated Land Details</string>
+    <string name="landType">Select Land Type</string>
+    <string name="Previous">Previous</string>
 
     <!--    Data Entry Activity String Arrays-->
 
-<!--    Crop Categories-->
+    <!--    Crop Categories-->
     <string-array name="crop_categories">
         <item>Vegetables</item>
         <item>Paddy</item>
@@ -31,8 +34,8 @@
         <item>Leafy Vegetables</item>
     </string-array>
 
-<!--    Crop Names-->
-<!--    Fruits-->
+    <!--    Crop Names-->
+    <!--    Fruits-->
     <string-array name="crop_fruits">
         <item>Amberella</item>
         <item>Banana</item>
@@ -44,7 +47,7 @@
         <item>Star Fruit</item>
         <item>Rambutan</item>
     </string-array>
-<!--    Crop Vegetables-->
+    <!--    Crop Vegetables-->
     <string-array name="crop_vegetables">
         <item>Tomato</item>
         <item>Eggplant</item>
@@ -53,7 +56,7 @@
         <item>Leeks</item>
         <item>Snake Gourd</item>
     </string-array>
-<!--    Other Field Crops-->
+    <!--    Other Field Crops-->
     <string-array name="crop_ofc">
         <item>Red Onions</item>
         <item>Chilli</item>
@@ -62,7 +65,7 @@
         <item>Cow Pea</item>
         <item>Gingerly</item>
     </string-array>
-<!--    Roots and Tubes-->
+    <!--    Roots and Tubes-->
     <string-array name="crops_roots">
         <item>Sweet Potato</item>
         <item>Potato</item>
@@ -70,7 +73,7 @@
         <item>Taro</item>
         <item>Yams</item>
     </string-array>
-<!--    Leafy Vegetables-->
+    <!--    Leafy Vegetables-->
     <string-array name="crop_leafy">
         <item>Kankun</item>
         <item>Gotukola</item>
@@ -79,5 +82,5 @@
         <item>Romaine Lettuce</item>
     </string-array>
 
-<!--    Crop Varieties-->
+    <!--    Crop Varieties-->
 </resources>
