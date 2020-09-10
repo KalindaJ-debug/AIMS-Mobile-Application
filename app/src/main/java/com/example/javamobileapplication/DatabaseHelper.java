@@ -68,7 +68,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         //create land data entry table
-        sqLiteDatabase.execSQL("create table " + TABLE_DATA_ENTRY + " (id INTEGER PRIMARY KEY AUTOINCREMENT, land_id INTEGER NOT NULL, crop_variety_id INTEGER NOT NULL, cultivated_land_extent DOUBLE NOT NULL, land_type TEXT)");//end of execSQL
+        sqLiteDatabase.execSQL("create table " + TABLE_DATA_ENTRY + " (id INTEGER PRIMARY KEY AUTOINCREMENT, land_id INTEGER, crop_variety_id INTEGER NOT NULL, cultivated_land_extent DOUBLE NOT NULL, land_type TEXT)");//end of execSQL
         //create crop category table
         sqLiteDatabase.execSQL("create table " + TABLE_CROP_CATEGORY + " (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL)");
         //create crop table
@@ -649,6 +649,92 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             sqLiteDatabase.close();
         }
         return cropVarietyList;
+    }//end of method
+
+    //get all land types
+    public ArrayList<String> getLandTypeList(){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase(); //read database
+        ArrayList<String> land_type_list = new ArrayList<String>();
+
+        sqLiteDatabase.beginTransaction(); //open db
+
+        try{
+            String query = "SELECT * FROM " + TABLE_LAND_TYPE;
+
+            Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+            if(cursor.moveToFirst()){
+                do{
+                    String item = cursor.getString(cursor.getColumnIndex("name"));
+                    land_type_list.add(item);
+
+                }while (cursor.moveToNext());
+            }//end if
+            else {
+                land_type_list.add("Error");
+            }
+
+            sqLiteDatabase.setTransactionSuccessful();
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            sqLiteDatabase.endTransaction();
+            sqLiteDatabase.close();
+        }
+
+        return land_type_list; //return list
+    } //end of get land type method
+
+    //get all land address list
+    public ArrayList<String> getLandAddressList(){
+        ArrayList<String> land_address_list = new ArrayList<String>();
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+
+        sqLiteDatabase.beginTransaction();
+
+        try{
+            String land_address_query = "SELECT * FROM " + TABLE_LAND_ADDRESS;
+            Cursor cursor = sqLiteDatabase.rawQuery(land_address_query, null);
+            if (cursor.moveToFirst()){
+                do {
+                    //fetch and concatenate land address
+                    String addressNo = cursor.getString(cursor.getColumnIndex("addressNo"));
+                    String street = cursor.getString(cursor.getColumnIndex("street"));
+                    String lane = cursor.getString(cursor.getColumnIndex("lane"));
+                    String address = addressNo + street + lane; //concatenate
+                    land_address_list.add(address);
+                } while (cursor.moveToNext());
+            }//end of if
+            else{
+                land_address_list.add("Error");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            sqLiteDatabase.endTransaction();
+            sqLiteDatabase.close();
+        }
+        return land_address_list; //return list
+    }//end of method
+
+    //insert data entry value
+    public boolean SetDataEntry(int land_id, int variety_id, double landExtent, int landType){
+        boolean result = true;
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase(); //write to database
+
+        //data entry
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_2, land_id);
+        contentValues.put(COL_3, variety_id);
+        contentValues.put(COL_4, landExtent);
+        contentValues.put(COL_5, landType);
+        long res = sqLiteDatabase.insert(TABLE_DATA_ENTRY, null, contentValues);
+         if(res == -1){
+             result = false; //failed
+         }//end if
+        return result;
     }//end of method
 
 } //end of database helper class

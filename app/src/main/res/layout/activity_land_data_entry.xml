@@ -79,7 +79,7 @@
         android:text="@string/land_extent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTextLandExtent"
         android:layout_width="172dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
