@@ -68,19 +68,19 @@
             android:textSize="30sp" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/NIC"
             android:layout_width="335dp"
             android:layout_height="16dp"
             android:layout_weight="1"
             android:background="@drawable/question"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/NIC" />
+            android:hint="@string/NIC"
+            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/nic_submit"
-            android:layout_width="164dp"
-            android:layout_height="3dp"
+            android:layout_width="166dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/NIC" />
 

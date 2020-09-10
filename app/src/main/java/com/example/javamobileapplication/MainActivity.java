@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         // Test line commit
         setContentView(R.layout.activity_main);
@@ -24,6 +23,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this , farmer_login.class);
         startActivity(intent);
 
+    }
+
+    public void changeOfficer(View view){
+        Intent intent = new Intent(this, officer_login.class);
+        startActivity(intent);
     }
 
 
