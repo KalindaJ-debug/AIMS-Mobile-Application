@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class LandDataEntryActivity extends AppCompatActivity {
 
@@ -23,7 +24,18 @@ public class LandDataEntryActivity extends AppCompatActivity {
 
         //instantiate database - SQLite database
         db = new DatabaseHelper(this);
-        db.seedCropCategory();
+        //seed crop information to tables
+        boolean success = true;
+         success = db.seedCropCategory();
+
+         if(success == false){
+             Toast.makeText(getApplicationContext(), "Error: Failed to Seed Crop Category Data", Toast.LENGTH_LONG).show(); //display error message
+         }
+
+         success = db.seedCrop();
+        if(success == false){
+            Toast.makeText(getApplicationContext(), "Error: Failed to Seed Crop Name Data", Toast.LENGTH_LONG).show(); //display error message
+        }
 
         //Button impl - Previous
         btnPrevious = (Button) findViewById(R.id.buttonBack);
