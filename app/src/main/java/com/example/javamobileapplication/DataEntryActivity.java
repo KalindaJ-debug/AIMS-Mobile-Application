@@ -19,7 +19,6 @@ public class DataEntryActivity extends AppCompatActivity {
         Spinner cropCategory = (Spinner) findViewById(R.id.spinnerCropCategory);
         Spinner cropName = (Spinner) findViewById(R.id.spinnerCropName);
         Spinner cropVariety = (Spinner) findViewById(R.id.spinnerCropVariety);
-        Spinner landAddress = (Spinner) findViewById(R.id.spinnerLandAddress);
 
         //spinner - crop category implementation
         ArrayAdapter<String> cropCategoryAdapter = new ArrayAdapter<String>(
