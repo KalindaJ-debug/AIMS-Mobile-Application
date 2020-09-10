@@ -115,7 +115,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //array - fruits
         ArrayList<String> crops_fruits = new ArrayList<String>();
         crops_fruits.add("Apple");
-        crops_fruits.add("Orange");
         crops_fruits.add("Mango");
         crops_fruits.add("Pineapple");
 
@@ -123,19 +122,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ArrayList<String> crops_ofc = new ArrayList<String>();
         crops_ofc.add("Cow Pea");
         crops_ofc.add("Green Gram");
-        crops_ofc.add("Red Gram");
 
         //array - roots and tubers
         ArrayList<String> crops_roots = new ArrayList<String>();
-        crops_roots.add("Carrot");
         crops_roots.add("Potato");
         crops_roots.add("Sweet Potato");
         crops_roots.add("Turmeric");
 
         //array - leafy vegetables
         ArrayList<String> crops_leafy = new ArrayList<String>();
-        crops_leafy.add("Kankun");
-        crops_leafy.add("Mint");
         crops_leafy.add("Spinach");
         crops_leafy.add("Lettuce");
 
@@ -204,5 +199,249 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result; //return boolean value
 
     }//end of insert crop
+
+    //seeder - crop variety
+    public boolean seedCropVariety(){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase(); //write to database
+        boolean result = true;
+
+        //array for vegetable varieties
+
+        //brinjol
+        ArrayList<String> brinjol = new ArrayList<String>();
+        brinjol.add("Anjalee");
+        brinjol.add("Amanda");
+        brinjol.add("SM-64");
+
+        //tomato
+        ArrayList<String> tomato = new ArrayList<String>();
+        tomato.add("T-146");
+        tomato.add("Maheshi");
+
+        //snakegourd
+        ArrayList<String> snakegourd = new ArrayList<String>();
+        snakegourd.add("TA-2");
+        snakegourd.add("M1-Short");
+
+        //capsicum
+        ArrayList<String> capsicum = new ArrayList<String>();
+        capsicum.add("Hungarian Yellow Wax");
+        capsicum.add("CA-8");
+
+        //array fruit varities
+        //apple
+        ArrayList<String> apple = new ArrayList<String>();
+        apple.add("ANK-1");
+        apple.add("ANK-2");
+
+        //mango
+        ArrayList<String> mango = new ArrayList<String>();
+        mango.add("Willard");
+        mango.add("Karutha Columnban");
+
+        //pineapple
+        ArrayList<String> pineapple = new ArrayList<String>();
+        pineapple.add("Cayenne ");
+        pineapple.add("Queen");
+
+        //array for ofc varieties
+        //cowpea
+        ArrayList<String> cowpea = new ArrayList<String>();
+        cowpea.add("M1-35 ");
+        cowpea.add("Maize-Bombay");
+
+        //green gram
+        ArrayList<String> greengram = new ArrayList<String>();
+        greengram.add("M1-1");
+        greengram.add("Harsha");
+
+        //array for leafy
+        //spinach
+        String spinachV = "Malabra Spinach";
+
+        //lettuce
+        ArrayList<String> lettuce = new ArrayList<String>();
+        lettuce.add("Red Oak Leaf");
+        lettuce.add("Blonde Oak Leaf");
+        lettuce.add("Red Butterhead Leaf");
+        lettuce.add("Little Gem Leaf");
+
+        //array for roots and tubers
+        //potato
+        ArrayList<String> potato = new ArrayList<String>();
+        potato.add("Hillstar");
+        potato.add("Granola");
+        potato.add("Sita");
+        potato.add("Krushi");
+
+        //sweet potato
+        ArrayList<String> sweetpotato = new ArrayList<String>();
+        sweetpotato.add("CARI-9");
+        sweetpotato.add("Wariyapola-white");
+        sweetpotato.add("Ranabima");
+        sweetpotato.add("BW-21");
+
+        //turmeric
+        ArrayList<String> turmeric = new ArrayList<String>();
+        turmeric.add("Gunter");
+        turmeric.add("Puna");
+        turmeric.add("Madurasi Majal");
+
+        //insert to table
+
+        //foreach loops
+        //vegetables
+        //brinjol
+        for (String item: brinjol) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(CV_COL_2, item); //name
+            contentValues.put(CV_COL_3, 1); //crop id
+            long r = sqLiteDatabase.insert(TABLE_CROP_VARIETY, null, contentValues);
+            if(r == -1){
+                result = false;
+            }
+        } //end of foreach loop
+
+        //tomato
+        for (String item: tomato) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(CV_COL_2, item); //name
+            contentValues.put(CV_COL_3, 2); //crop id
+            long r = sqLiteDatabase.insert(TABLE_CROP_VARIETY, null, contentValues);
+            if(r == -1){
+                result = false;
+            }
+        } //end of foreach loop
+
+        //snakegourd
+        for (String item: snakegourd) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(CV_COL_2, item); //name
+            contentValues.put(CV_COL_3, 3); //crop id
+            long r = sqLiteDatabase.insert(TABLE_CROP_VARIETY, null, contentValues);
+            if(r == -1){
+                result = false;
+            }
+        } //end of foreach loop
+
+        //capsicum
+        for (String item: capsicum) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(CV_COL_2, item); //name
+            contentValues.put(CV_COL_3, 4); //crop id
+            long r = sqLiteDatabase.insert(TABLE_CROP_VARIETY, null, contentValues);
+            if(r == -1){
+                result = false;
+            }
+        } //end of foreach loop
+
+        //fruits
+        //apple
+        for (String item: apple) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(CV_COL_2, item); //name
+            contentValues.put(CV_COL_3, 5); //crop id
+            long r = sqLiteDatabase.insert(TABLE_CROP_VARIETY, null, contentValues);
+            if(r == -1){
+                result = false;
+            }
+        } //end of foreach loop
+        //mango
+        for (String item: mango) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(CV_COL_2, item); //name
+            contentValues.put(CV_COL_3, 6); //crop id
+            long r = sqLiteDatabase.insert(TABLE_CROP_VARIETY, null, contentValues);
+            if(r == -1){
+                result = false;
+            }
+        } //end of foreach loop
+        //pineapple
+        for (String item: pineapple) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(CV_COL_2, item); //name
+            contentValues.put(CV_COL_3, 7); //crop id
+            long r = sqLiteDatabase.insert(TABLE_CROP_VARIETY, null, contentValues);
+            if(r == -1){
+                result = false;
+            }
+        } //end of foreach loop
+
+        //ofc
+        //cow pea
+        for (String item: cowpea) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(CV_COL_2, item); //name
+            contentValues.put(CV_COL_3, 8); //crop id
+            long r = sqLiteDatabase.insert(TABLE_CROP_VARIETY, null, contentValues);
+            if(r == -1){
+                result = false;
+            }
+        } //end of foreach loop
+        //green gram
+        for (String item: greengram) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(CV_COL_2, item); //name
+            contentValues.put(CV_COL_3, 9); //crop id
+            long r = sqLiteDatabase.insert(TABLE_CROP_VARIETY, null, contentValues);
+            if(r == -1){
+                result = false;
+            }
+        } //end of foreach loop
+
+        //leafy
+        //spinach
+        ContentValues cv = new ContentValues();
+        cv.put(CV_COL_2, spinachV);
+        cv.put(CV_COL_3, 10);
+        long res = sqLiteDatabase.insert(TABLE_CROP_VARIETY, null, cv);
+        if(res == -1){
+            result = false;
+        }
+        //lettuce
+        for (String item: lettuce) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(CV_COL_2, item); //name
+            contentValues.put(CV_COL_3, 11); //crop id
+            long r = sqLiteDatabase.insert(TABLE_CROP_VARIETY, null, contentValues);
+            if(r == -1){
+                result = false;
+            }
+        } //end of foreach loop
+
+        //roots
+        //potato
+        for (String item: potato) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(CV_COL_2, item); //name
+            contentValues.put(CV_COL_3, 12); //crop id
+            long r = sqLiteDatabase.insert(TABLE_CROP_VARIETY, null, contentValues);
+            if(r == -1){
+                result = false;
+            }
+        } //end of foreach loop
+        //sweet potato
+        for (String item: sweetpotato) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(CV_COL_2, item); //name
+            contentValues.put(CV_COL_3, 13); //crop id
+            long r = sqLiteDatabase.insert(TABLE_CROP_VARIETY, null, contentValues);
+            if(r == -1){
+                result = false;
+            }
+        } //end of foreach loop
+        //turmeric
+        for (String item: turmeric) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(CV_COL_2, item); //name
+            contentValues.put(CV_COL_3, 14); //crop id
+            long r = sqLiteDatabase.insert(TABLE_CROP_VARIETY, null, contentValues);
+            if(r == -1){
+                result = false;
+            }
+        } //end of foreach loop
+
+        return result;
+    }//end of seed crop variety
 
 } //end of database helper class
