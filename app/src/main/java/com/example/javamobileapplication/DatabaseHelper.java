@@ -68,7 +68,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         //create land data entry table
-        sqLiteDatabase.execSQL("create table " + TABLE_DATA_ENTRY + " (id INTEGER PRIMARY KEY AUTOINCREMENT, land_id INTEGER, crop_variety_id INTEGER NOT NULL, cultivated_land_extent DOUBLE NOT NULL, land_type TEXT)");//end of execSQL
+        sqLiteDatabase.execSQL("create table " + TABLE_DATA_ENTRY + " (id INTEGER PRIMARY KEY AUTOINCREMENT, land_id INTEGER, crop_variety_id INTEGER NOT NULL, cultivated_land_extent FLOAT NOT NULL, land_type TEXT)");//end of execSQL
         //create crop category table
         sqLiteDatabase.execSQL("create table " + TABLE_CROP_CATEGORY + " (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL)");
         //create crop table
@@ -94,6 +94,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      onCreate(sqLiteDatabase);
 
     } //end of on upgrade method
+
+    //insert data entry value
+    public boolean SetDataEntry(int land_id, int variety_id, float landExtent, int landType){
+        boolean result = true;
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase(); //write to database
+
+        //data entry
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_2, land_id);
+        contentValues.put(COL_3, variety_id);
+        contentValues.put(COL_4, landExtent);
+        contentValues.put(COL_5, landType);
+        long res = sqLiteDatabase.insert(TABLE_DATA_ENTRY, null, contentValues);
+        if(res == -1){
+            result = false; //failed
+        }//end if
+        return result;
+    }//end of method
 
     //data seeder methods
     //crop category table - data seeder method
@@ -719,22 +737,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return land_address_list; //return list
     }//end of method
 
-    //insert data entry value
-    public boolean SetDataEntry(int land_id, int variety_id, double landExtent, int landType){
-        boolean result = true;
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase(); //write to database
-
-        //data entry
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_2, land_id);
-        contentValues.put(COL_3, variety_id);
-        contentValues.put(COL_4, landExtent);
-        contentValues.put(COL_5, landType);
-        long res = sqLiteDatabase.insert(TABLE_DATA_ENTRY, null, contentValues);
-         if(res == -1){
-             result = false; //failed
-         }//end if
-        return result;
-    }//end of method
 
 } //end of database helper class
