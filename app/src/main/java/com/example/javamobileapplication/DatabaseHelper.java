@@ -557,11 +557,98 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             sqLiteDatabase.close();
         }
 
-
         return crop_category_list; //return list
     } //end of get crop category
 
+    //get crop category id
+    public int getCropCategoryID(String CropCategory){
+        int id = 1;
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase(); //read database
+        sqLiteDatabase.beginTransaction(); //open db
+        try{
+            String query = "SELECT id FROM " + TABLE_CROP_CATEGORY + " WHERE TRIM(name) = '" + CropCategory.trim() + "'";
+            Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+            if(cursor.moveToFirst()){
+                id = cursor.getInt(cursor.getColumnIndex("id"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        } //end of catch block
+        finally {
+            sqLiteDatabase.endTransaction();
+            sqLiteDatabase.close();
+        }
+        return id;
+    }//end of method
+
     //crops
-    //crop varieties
+    public ArrayList<String> getCropList(int cropCategoryID){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase(); //read database
+        ArrayList<String> crop_list = new ArrayList<String>();
+        sqLiteDatabase.beginTransaction(); //open db
+        try{
+            String query = "SELECT * FROM " + TABLE_CROP_NAME + " WHERE crop_category_id = "+ cropCategoryID;
+            Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+            if(cursor.moveToFirst()){
+                do {
+                    String item = cursor.getString(cursor.getColumnIndex("name"));
+                    crop_list.add(item);
+                }while (cursor.moveToNext());
+            }//end if
+        }catch(Exception e){
+            e.printStackTrace();
+        } //end of catch block
+        finally {
+            sqLiteDatabase.endTransaction();
+            sqLiteDatabase.close();
+        }
+
+        return crop_list;
+    }//end of get crop list
+
+    //get crop id
+    public int getCropID(String Crop){
+        int id = 0;
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase(); //read database
+        sqLiteDatabase.beginTransaction(); //open db
+        try{
+            String query = "SELECT id FROM " + TABLE_CROP_NAME + " WHERE TRIM(name) = '" + Crop.trim() + "'";
+            Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+            if(cursor.moveToFirst()){
+                id = cursor.getInt(cursor.getColumnIndex("id"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        } //end of catch block
+        finally {
+            sqLiteDatabase.endTransaction();
+            sqLiteDatabase.close();
+        }
+        return id;
+    }//end of method
+
+    //get crop variety list
+    public ArrayList<String> getCropVarietyList(int cropID){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase(); //read database
+        ArrayList<String> cropVarietyList = new ArrayList<String>();
+        sqLiteDatabase.beginTransaction(); //open db
+        try{
+            String query = "SELECT * FROM " + TABLE_CROP_VARIETY + " WHERE crop_id = "+ cropID;
+            Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+            if(cursor.moveToFirst()){
+                do {
+                    String item = cursor.getString(cursor.getColumnIndex("name"));
+                    cropVarietyList.add(item);
+                }while (cursor.moveToNext());
+            }//end if
+        }catch(Exception e){
+            e.printStackTrace();
+        } //end of catch block
+        finally {
+            sqLiteDatabase.endTransaction();
+            sqLiteDatabase.close();
+        }
+        return cropVarietyList;
+    }//end of method
 
 } //end of database helper class

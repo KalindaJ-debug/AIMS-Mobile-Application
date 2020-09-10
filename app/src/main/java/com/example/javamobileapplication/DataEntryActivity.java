@@ -68,6 +68,33 @@ public class DataEntryActivity extends AppCompatActivity {
         ); //end of adapter
         crop_category_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         cropCategory.setAdapter(crop_category_adapter);
+        //end crop category spinner
+
+        String selectedCropCategory = cropCategory.getSelectedItem().toString();
+        int selectedCropCategoryID = db.getCropCategoryID(selectedCropCategory);
+
+        //spinner - crop list implementation
+        ArrayList<String> crop_list = db.getCropList(selectedCropCategoryID);
+        ArrayAdapter<String> crop_list_adapter = new ArrayAdapter<String>(
+                this,
+                R.layout.support_simple_spinner_dropdown_item,
+                crop_list
+        );//end of adapter
+        crop_list_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        cropName.setAdapter(crop_list_adapter);
+
+        //spinner - crop variety implementation
+        String selectedCrop = cropName.getSelectedItem().toString();
+        int selectedCropID = db.getCropID(selectedCrop);
+
+        ArrayList<String> crop_variety_list = db.getCropVarietyList(selectedCropID);
+        ArrayAdapter<String> crop_variety_adapter = new ArrayAdapter<String>(
+                this,
+                R.layout.support_simple_spinner_dropdown_item,
+                crop_variety_list
+        );//end of adapter
+        crop_variety_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        cropVariety.setAdapter(crop_variety_adapter);
 
         //Button - Next implementation
         btnNext = (Button) findViewById(R.id.buttonNext);
