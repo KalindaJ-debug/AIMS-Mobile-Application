@@ -23,6 +23,7 @@ public class LandDataEntryActivity extends AppCompatActivity {
 
         //instantiate database - SQLite database
         db = new DatabaseHelper(this);
+        db.seedCropCategory();
 
         //Button impl - Previous
         btnPrevious = (Button) findViewById(R.id.buttonBack);
