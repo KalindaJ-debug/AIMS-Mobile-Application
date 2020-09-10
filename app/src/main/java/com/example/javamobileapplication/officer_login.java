@@ -48,6 +48,8 @@ public class officer_login extends AppCompatActivity {
                     Toast.makeText(officer_login.this, "Welcome officer", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(getApplicationContext(), Officer_logged.class);
                     i.putExtra("UserName", u_name);
+
+                    startActivity(i);
                 }else{
                     Toast.makeText(officer_login.this, "You are not registered", Toast.LENGTH_SHORT).show();
                 }

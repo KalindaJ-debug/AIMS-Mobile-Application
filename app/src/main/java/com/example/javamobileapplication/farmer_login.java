@@ -47,6 +47,7 @@ public class farmer_login extends AppCompatActivity {
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
         */
 
+        //check if the button is clicked
         login = findViewById(R.id.nic_submit);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
