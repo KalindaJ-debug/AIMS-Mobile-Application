@@ -5,14 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class LandDataEntryActivity extends AppCompatActivity {
 
     //Declarations
     //Variables
+    //Buttons
     Button btnPrevious; //previous button
+    Button btnSubmit; //submit button
 
     //Database
     DatabaseHelper db;
@@ -21,6 +25,18 @@ public class LandDataEntryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_land_data_entry);
+
+        //Spinner- land measurements
+        Spinner landMeasurements = (Spinner) findViewById(R.id.spinnerLand);
+
+        //spinner - land measurements implementation
+        ArrayAdapter<String> landMeasurementsArray = new ArrayAdapter<String>(
+                LandDataEntryActivity.this,
+                R.layout.support_simple_spinner_dropdown_item,
+                getResources().getStringArray(R.array.land_measurements)
+        ); //end of array adapter
+        landMeasurementsArray.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        landMeasurements.setAdapter(landMeasurementsArray);
 
         //instantiate database - SQLite database
         db = new DatabaseHelper(this);

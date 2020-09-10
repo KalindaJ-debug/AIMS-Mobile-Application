@@ -24,13 +24,7 @@ public class DataEntryActivity extends AppCompatActivity {
         Spinner cropVariety = (Spinner) findViewById(R.id.spinnerCropVariety);
 
         //spinner - crop category implementation
-        ArrayAdapter<String> cropCategoryAdapter = new ArrayAdapter<String>(
-                DataEntryActivity.this,
-                R.layout.support_simple_spinner_dropdown_item,
-                getResources().getStringArray(R.array.crop_categories)
-        ); //end of array adapter
-        cropCategoryAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        cropCategory.setAdapter(cropCategoryAdapter); //set adapter list
+
 
         //Button - Next implementation
         btnNext = (Button) findViewById(R.id.buttonNext);

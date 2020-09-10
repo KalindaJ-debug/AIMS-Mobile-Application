@@ -94,7 +94,7 @@
         android:inputType="textPersonName" />
 
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/spinnerLand"
         android:layout_width="89dp"
         android:layout_height="51dp"
         android:layout_alignParentTop="true"
