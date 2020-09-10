@@ -62,6 +62,10 @@ public class LandDataEntryActivity extends AppCompatActivity {
         if(success == false){
             Toast.makeText(getApplicationContext(), "Error: Failed to Seed Land Type Data", Toast.LENGTH_LONG).show(); //display error message
         }
+        success = db.seedLandAddress();
+        if(success == false){
+            Toast.makeText(getApplicationContext(), "Error: Failed to Seed Land Address Data", Toast.LENGTH_LONG).show(); //display error message
+        }
 
         //Button impl - Previous
         btnPrevious = (Button) findViewById(R.id.buttonBack);

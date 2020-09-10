@@ -21,6 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_CROP_NAME = "crop_table"; //crop name
     public static final String TABLE_CROP_VARIETY = "crop_variety_table"; //crop variety
     public static final String TABLE_LAND_TYPE = "land_type_table"; //land type
+    public static final String TABLE_LAND_ADDRESS = "land_address_table"; //land address table
 
 //    Columns
     //Table - Data Entry
@@ -48,6 +49,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String LT_COL_1 = "id";
     public static final String LT_COL_2 = "name";
 
+    //Table - Land Address
+    public static final String LA_COL_1 = "id";
+    public static final String LA_COL_2 = "addressNo";
+    public static final String LA_COL_3 = "street";
+    public static final String LA_COL_4 = "lane";
+    public static final String LA_COL_5 = "district";
+    public static final String LA_COL_6 = "province";
+    public static final String LA_COL_7 = "land_extent";
+
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);//create database
 
@@ -66,6 +76,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table " + TABLE_CROP_VARIETY + " (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, crop_id INTEGER NOT NULL, FOREIGN KEY (crop_id) REFERENCES " + TABLE_CROP_NAME + "(id))");
         //create land type table
         sqLiteDatabase.execSQL("create table " + TABLE_LAND_TYPE + " (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL)");
+        //create land address table
+        sqLiteDatabase.execSQL("create table " + TABLE_LAND_ADDRESS + " (id INTEGER PRIMARY KEY AUTOINCREMENT, addressNo TEXT NOT NULL, street TEXT, lane TEXT NOT NULL, district TEXT NOT NULL, province TEXT NOT NULL, land_extent DOUBLE NOT NULL)");
 
     } //end of on create method
 
@@ -76,6 +88,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_CROP_NAME);
      sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_CROP_VARIETY);
      sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_LAND_TYPE);
+     sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_LAND_ADDRESS);
 
      onCreate(sqLiteDatabase);
 
@@ -485,5 +498,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return result;
     }//end of seed land type
+
+    //data seeder - land address
+    public boolean seedLandAddress(){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase(); //write to database
+        boolean result = true;
+        //land address 1
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(LA_COL_2, "17/A");
+        contentValues.put(LA_COL_3, "2nd Street");
+        contentValues.put(LA_COL_4, "2nd Lane");
+        contentValues.put(LA_COL_5, "Colombo");
+        contentValues.put(LA_COL_6, "Western");
+        contentValues.put(LA_COL_7, 125.21);
+        long deck = sqLiteDatabase.insert(TABLE_LAND_ADDRESS, null, contentValues);
+        if(deck == -1){
+            result = false;
+        }
+        //land address 2
+        ContentValues cv = new ContentValues();
+        cv.put(LA_COL_2, "21B");
+        cv.put(LA_COL_3, "Araliya Street");
+        cv.put(LA_COL_4, "Mahagasthota Lane");
+        cv.put(LA_COL_5, "Gampaha");
+        cv.put(LA_COL_6, "Western");
+        cv.put(LA_COL_7, 300.1);
+        long peck = sqLiteDatabase.insert(TABLE_LAND_ADDRESS, null, cv);
+        if(peck == -1){
+            result = false;
+        }
+        return result;
+    }//end of land address seeder
 
 } //end of database helper class
