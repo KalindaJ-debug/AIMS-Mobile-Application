@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Java Mobile Application</string>
+    <string name="welcome">Welcome to AIMS mobile</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="farmer">Farmer</string>
+    <string name="field">Field Officer</string>
+
 </resources>
