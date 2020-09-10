@@ -9,5 +9,7 @@
     <string name="Login">Login with username</string>
     <string name="Enter_nic">Enter NIC no to proceed</string>
     <string name="submit">Submit</string>
+    <string name="Approval">Approval</string>
+    <string name="Data">Data Entry</string>
 
 </resources>

@@ -2,6 +2,7 @@ package com.example.javamobileapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -45,8 +46,8 @@ public class officer_login extends AppCompatActivity {
                     //startActivity(i);
                 }else if(passCheck(u_name , p_word)){
                     Toast.makeText(officer_login.this, "Welcome officer", Toast.LENGTH_SHORT).show();
-                    //Intent i = new Intent(getApplicationContext(), officer_select.class);
-                    //i.putExtra("UserName", username);
+                    Intent i = new Intent(getApplicationContext(), Officer_logged.class);
+                    i.putExtra("UserName", u_name);
                 }else{
                     Toast.makeText(officer_login.this, "You are not registered", Toast.LENGTH_SHORT).show();
                 }
