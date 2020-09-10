@@ -58,6 +58,11 @@ public class LandDataEntryActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Error: Failed to Seed Crop Variety Data", Toast.LENGTH_LONG).show(); //display error message
         }
 
+        success = db.seedLandType();
+        if(success == false){
+            Toast.makeText(getApplicationContext(), "Error: Failed to Seed Land Type Data", Toast.LENGTH_LONG).show(); //display error message
+        }
+
         //Button impl - Previous
         btnPrevious = (Button) findViewById(R.id.buttonBack);
         btnPrevious.setOnClickListener(new View.OnClickListener() {

@@ -20,6 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_CROP_CATEGORY = "crop_category_table"; //crop category
     public static final String TABLE_CROP_NAME = "crop_table"; //crop name
     public static final String TABLE_CROP_VARIETY = "crop_variety_table"; //crop variety
+    public static final String TABLE_LAND_TYPE = "land_type_table"; //land type
 
 //    Columns
     //Table - Data Entry
@@ -43,6 +44,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String CV_COL_2 = "name";
     public static final String CV_COL_3 = "crop_id";
 
+    //Table - Land Type
+    public static final String LT_COL_1 = "id";
+    public static final String LT_COL_2 = "name";
+
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);//create database
 
@@ -59,6 +64,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table " + TABLE_CROP_NAME + " (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, crop_category_id INTEGER NOT NULL, FOREIGN KEY (crop_category_id) REFERENCES " + TABLE_CROP_CATEGORY + "(id))");
         //create crop variety table
         sqLiteDatabase.execSQL("create table " + TABLE_CROP_VARIETY + " (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, crop_id INTEGER NOT NULL, FOREIGN KEY (crop_id) REFERENCES " + TABLE_CROP_NAME + "(id))");
+        //create land type table
+        sqLiteDatabase.execSQL("create table " + TABLE_LAND_TYPE + " (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL)");
 
     } //end of on create method
 
@@ -68,6 +75,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_CROP_CATEGORY);
      sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_CROP_NAME);
      sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_CROP_VARIETY);
+     sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_LAND_TYPE);
 
      onCreate(sqLiteDatabase);
 
@@ -443,5 +451,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return result;
     }//end of seed crop variety
+
+    //seed land type table
+    public boolean seedLandType(){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase(); //write to database
+        boolean result = true;
+
+        //array
+        ArrayList<String> landType = new ArrayList<String>();
+        landType.add("Reddish Brown Earths");
+        landType.add("Low Humic Gley");
+        landType.add("Non-Calcic Brown");
+        landType.add("Red and Yellow Latasols");
+        landType.add("Immature Brown Loams");
+        landType.add("Solodized Solonetz");
+        landType.add("Grumusols");
+        landType.add("Red Yellow Podzolic");
+        landType.add("Reddish Brown Latasol");
+        landType.add("Alluvials");
+        landType.add("Regosols");
+        landType.add("Bog and Half Bog");
+        landType.add("Lithosols");
+
+        //seed data - foreach loop
+        for (String item: landType) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(LT_COL_2, item);
+            long q = sqLiteDatabase.insert(TABLE_LAND_TYPE, null, contentValues);
+            if (q == -1){
+                result =  false;
+            }//end of if
+        } //end of foreach loop
+
+        return result;
+    }//end of seed land type
 
 } //end of database helper class
