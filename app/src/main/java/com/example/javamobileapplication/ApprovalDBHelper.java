@@ -23,7 +23,6 @@ public class ApprovalDBHelper extends SQLiteOpenHelper {
         public static final String COLUMN_NAME_REGION = "region";
         public static final String COLUMN_NAME_SUBMITTED_DATE = "submitedDate";
         public static final String COLUMN_NAME_HARVEST_AMOUNT = "harvestedAmount";
-        public static final String COLUMN_NAME_LAND = "cultivatedLand";
     }
 
     private static final String SQL_CREATE_ENTRIES =
@@ -34,8 +33,7 @@ public class ApprovalDBHelper extends SQLiteOpenHelper {
                     Approval.COLUMN_NAME_DISTRICT + " TEXT," +
                     Approval.COLUMN_NAME_REGION + " TEXT," +
                     Approval.COLUMN_NAME_SUBMITTED_DATE + " TEXT," +
-                    Approval.COLUMN_NAME_HARVEST_AMOUNT + " TEXT," +
-                    Approval.COLUMN_NAME_LAND + " TEXT)";
+                    Approval.COLUMN_NAME_HARVEST_AMOUNT + " TEXT)";
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + Approval.TABLE_NAME;

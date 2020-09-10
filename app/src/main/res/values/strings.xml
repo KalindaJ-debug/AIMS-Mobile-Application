@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Java Mobile Application</string>
+    <string name="farmerFirstName">Farmer First Name</string>
+    <string name="farmerLastName">Farmer Last Name</string>
+    <string name="district">District</string>
+    <string name="region">Region</string>
+    <string name="submitDate">Submitted Date</string>
+    <string name="harvestedLand">Harvested Land</string>
+    <string name="Approve">Approve</string>
+    <string name="Deny">Deny</string>
 </resources>

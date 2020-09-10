@@ -46,6 +46,7 @@ public class ApprovalMain extends AppCompatActivity {
 
     public void nextActivity(View view) {
         Intent intent = new Intent(this, ApprovalDescription.class);
+        intent.putExtra("test", "Test Value");
         startActivity(intent);
     }
 
