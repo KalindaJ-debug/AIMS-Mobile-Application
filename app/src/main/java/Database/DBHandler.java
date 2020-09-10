@@ -14,7 +14,7 @@ import java.util.List;
 
 public class DBHandler extends SQLiteOpenHelper{
 
-    public static final String DATABASE_NAME = "AIMS";
+    public static final String DATABASE_NAME = "AIMS.db";
 
     public DBHandler(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, null , 1);
@@ -23,6 +23,18 @@ public class DBHandler extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
+        String QUERY1 = "CREATE TABLE " + TableHandler.Users.TABLE_NAME + " ( " +
+                TableHandler.Users.COL_1 + " VARCHAR(20) PRIMARY KEY, " +
+                TableHandler.Users.COL_2+ " VARCHAR(30) , " +
+                TableHandler.Users.COL_3+ " VARCHAR(20) ) ";
+
+        sqLiteDatabase.execSQL(QUERY1);
+
+        String QUERY1a = "INSERT INTO " +TableHandler.Users.TABLE_NAME+" VALUES('Rishi','password','admin')";
+        String QUERY1b = "INSERT INTO " +TableHandler.Users.TABLE_NAME+" VALUES('Nelaka','password','FO')";
+
+        sqLiteDatabase.execSQL(QUERY1a);
+        sqLiteDatabase.execSQL(QUERY1b);
     }
 
     @Override
