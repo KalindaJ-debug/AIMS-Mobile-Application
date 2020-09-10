@@ -2,6 +2,7 @@ package com.example.javamobileapplication;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -529,5 +530,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return result;
     }//end of land address seeder
+
+    //implement getters
+    //crop category
+    public ArrayList<String> getCropCategory(){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase(); //read database
+        ArrayList<String> crop_category_list = new ArrayList<String>();
+
+        sqLiteDatabase.beginTransaction(); //open db
+        try{
+            String query = "SELECT * FROM " + TABLE_CROP_CATEGORY;
+
+            Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+            if(cursor.moveToFirst()){
+                do{
+                    String item = cursor.getString(cursor.getColumnIndex("name"));
+                    crop_category_list.add(item);
+                }while (cursor.moveToNext());
+            }//end if
+            sqLiteDatabase.setTransactionSuccessful();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            sqLiteDatabase.endTransaction();
+            sqLiteDatabase.close();
+        }
+
+
+        return crop_category_list; //return list
+    } //end of get crop category
+
+    //crops
+    //crop varieties
 
 } //end of database helper class
