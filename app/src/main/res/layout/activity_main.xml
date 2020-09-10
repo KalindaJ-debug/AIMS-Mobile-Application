@@ -4,22 +4,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="71dp"
-        android:layout_marginLeft="71dp"
-        android:layout_marginTop="242dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginRight="72dp"
-        android:layout_marginBottom="457dp"
-        android:text="@string/welcome"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="375dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="36dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/aims_mobile"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.357"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="221dp"
+        android:layout_height="220dp"
+        android:layout_marginStart="106dp"
+        android:layout_marginLeft="106dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="106dp"
+        android:layout_marginRight="106dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/emblem2" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="379dp"
+        android:layout_height="247dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="88dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="11dp"
+            android:layout_weight="1"
+            android:text="@string/farmer"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/nic_submit"
+            android:layout_width="164dp"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            android:text="@string/NIC" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="354dp"
+            android:layout_height="9dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/field"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/login_submit"
+            android:layout_width="261dp"
+            android:layout_height="4dp"
+            android:layout_weight="1"
+            android:text="@string/Login" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

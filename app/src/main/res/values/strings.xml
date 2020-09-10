@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">Java Mobile Application</string>
-    <string name="welcome">Welcome to AIMS mobile</string>
+    <string name="aims_mobile">Agricultural Information Management System</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="farmer">Farmer</string>
     <string name="field">Field Officer</string>
+    <string name="NIC">Enter NIC</string>
+    <string name="Login">Login with username</string>
+    <string name="Enter_nic">Enter NIC no to proceed</string>
 
 </resources>
