@@ -12,4 +12,16 @@
     <string name="Approval">Approval</string>
     <string name="Data">Data Entry</string>
 
+    <string name="farmerFirstName">Farmer First Name</string>
+    <string name="farmerLastName">Farmer Last Name</string>
+    <string name="district">District</string>
+    <string name="region">Region</string>
+    <string name="submitDate">Submitted Date</string>
+    <string name="harvestedLand">Harvested Land</string>
+    <string name="Approve">Approve</string>
+    <string name="Deny">Deny</string>
+    <string name="approval">Approval Requests</string>
+    <string name="farmer_details">Farmer Details</string>
+    <string name="districtTable">District Details</string>
+    <string name="action">Action</string>
 </resources>

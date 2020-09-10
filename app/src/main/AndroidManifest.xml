@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/NoActionBar">
+        <activity android:name=".ApprovalDescription"></activity>
+        <activity android:name=".ApprovalMain" ></activity>
+
         <activity android:name=".Officer_logged"></activity>
         <activity android:name=".officer_login" />
         <activity android:name=".farmer_login" />
