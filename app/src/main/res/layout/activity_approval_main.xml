@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ApprovalMain">
-
+    
     <Button
         android:id="@+id/description"
         android:layout_width="wrap_content"
@@ -13,7 +13,8 @@
         android:onClick="nextActivity"
         android:text="Next Activity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="448dp" />
+        tools:layout_editor_absoluteY="613dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
