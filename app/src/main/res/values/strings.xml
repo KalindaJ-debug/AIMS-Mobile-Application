@@ -1,15 +1,58 @@
 <resources>
-    <string name="app_name">Java Mobile Application</string>
+    <string name="app_name">AIMS</string>
+
+    <!--    Data Entry Activity Strings-->
+
+    <string name="crop_name">Select Crop Name</string>
+    <string name="crop_category">Select Crop Category</string>
+    <string name="crop_variety">Select Crop Variety</string>
+    <string name="cultivated_land_extent">Cultivated Land Extent</string>
+    <string name="district">District</string>
+    <string name="province">Province</string>
+    <string name="land_address">Land Address</string>
+    <string name="aims_title">AIMS</string>
+    <string name="dataEntry_title">Enter Cultivated Crop Data</string>
+    <string name="data_entry_image">data entry image</string>
+    <string name="land_extent">Land Extent (ha)</string>
+    <string name="reset">Reset</string>
+    <string name="submit">Submit</string>
+    <string name="hectares">   (ha)</string>
+    <string name="next">Next</string>
+    <string name="landTitle">Enter Cultivated Land Details</string>
+    <string name="landType">Select Land Type</string>
+    <string name="Previous">Previous</string>
+
+    <!--    Data Entry Activity String Arrays-->
+
+    <!--    Land Measurements-->
+    <string-array name="land_measurements">
+        <item>Hectares (ha)</item>
+        <item>Acre</item>
+        <item>Rood</item>
+        <item>Perch</item>
+    </string-array>
+
+    <string name="aims_mobile">Agricultural Information Management System</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="farmer">Farmer</string>
+    <string name="field">Field Officer</string>
+    <string name="NIC">Enter NIC</string>
+    <string name="Login">Login with username</string>
+    <string name="Enter_nic">Enter NIC no to proceed</string>
+    <string name="Approval">Approval</string>
+    <string name="Data">Data Entry</string>
+
     <string name="farmerFirstName">Farmer First Name</string>
     <string name="farmerLastName">Farmer Last Name</string>
-    <string name="district">District</string>
     <string name="region">Region</string>
     <string name="submitDate">Submitted Date</string>
     <string name="harvestedLand">Harvested Land</string>
     <string name="Approve">Approve</string>
     <string name="Deny">Deny</string>
     <string name="approval">Approval Requests</string>
-    <string name="farmer">Farmer Details</string>
+    <string name="farmer_details">Farmer Details</string>
     <string name="districtTable">District Details</string>
     <string name="action">Action</string>
+
 </resources>
