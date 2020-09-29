@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -68,7 +69,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         //create land data entry table
-        sqLiteDatabase.execSQL("create table " + TABLE_DATA_ENTRY + " (id INTEGER PRIMARY KEY AUTOINCREMENT, land_id INTEGER, crop_variety_id INTEGER NOT NULL, cultivated_land_extent FLOAT NOT NULL, land_type TEXT)");//end of execSQL
+        sqLiteDatabase.execSQL("create table " + TABLE_DATA_ENTRY + " (id INTEGER PRIMARY KEY AUTOINCREMENT, land_id INTEGER, crop_variety_id INTEGER NOT NULL, cultivated_land_extent DOUBLE NOT NULL, land_type TEXT)");//end of execSQL
         //create crop category table
         sqLiteDatabase.execSQL("create table " + TABLE_CROP_CATEGORY + " (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL)");
         //create crop table
@@ -79,6 +80,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table " + TABLE_LAND_TYPE + " (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL)");
         //create land address table
         sqLiteDatabase.execSQL("create table " + TABLE_LAND_ADDRESS + " (id INTEGER PRIMARY KEY AUTOINCREMENT, addressNo TEXT NOT NULL, street TEXT, lane TEXT NOT NULL, district TEXT NOT NULL, province TEXT NOT NULL, land_extent DOUBLE NOT NULL)");
+
+        //seed data
+        seedCropCategory(sqLiteDatabase);
+        seedCrop(sqLiteDatabase);
+        seedCropVariety(sqLiteDatabase);
+        seedLandAddress(sqLiteDatabase);
+        seedLandType(sqLiteDatabase);
 
     } //end of on create method
 
@@ -95,8 +103,78 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     } //end of on upgrade method
 
+    //get variety id method
+    public int GetVarietyId(String crop_variety){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        int variety = -1;
+        String fetched;
+        sqLiteDatabase.beginTransaction();
+
+        if (crop_variety == null || crop_variety.isEmpty()){
+            return -1; //return error
+        }else{
+            //check
+            try{
+                String query = "SELECT id FROM " + TABLE_CROP_VARIETY + " WHERE name = '" + crop_variety + "'";
+                Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+
+                if(cursor.getCount() != 0){
+                    cursor.moveToFirst();
+                    fetched = cursor.getString(cursor.getColumnIndex("id"));
+                    variety = Integer.parseInt(fetched);
+                    sqLiteDatabase.setTransactionSuccessful();
+                }
+                else{
+                    //not found
+                    return -1;
+                }
+            }catch(Exception e){
+                e.printStackTrace();
+            } finally {
+                sqLiteDatabase.endTransaction();
+                sqLiteDatabase.close();
+            }
+        }
+
+        return variety;
+    }//end of method
+
+    //get land type id method
+    public int GetLandTypeId(String land_type){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        int land_id = -1;
+        String fetched;
+        sqLiteDatabase.beginTransaction(); //open db
+
+        if(land_type.isEmpty() || land_type == null){
+            return -1;
+        }
+        else{
+            try{
+                String query = "SELECT id FROM " + TABLE_LAND_TYPE + "WHERE name = '" + land_type + "'";
+                Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+                if(cursor.getCount() != 0){
+                    cursor.moveToFirst();
+                    fetched = cursor.getString(cursor.getColumnIndex("id"));
+                    land_id = Integer.parseInt(fetched);
+                    sqLiteDatabase.setTransactionSuccessful();
+                }
+                else{
+                    land_id = -1;
+                }
+                
+            } catch(Exception e){
+                e.printStackTrace();
+            } finally {
+                sqLiteDatabase.endTransaction();
+                sqLiteDatabase.close();
+            }
+            return land_id;
+        }
+    }//end of method
+
     //insert data entry value
-    public boolean SetDataEntry(int land_id, int variety_id, float landExtent, int landType){
+    public boolean SetDataEntry(int land_id, int variety_id, double landExtent, int landType){
         boolean result = true;
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase(); //write to database
 
@@ -115,8 +193,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //data seeder methods
     //crop category table - data seeder method
-    public boolean seedCropCategory(){
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase(); //write to database
+    public boolean seedCropCategory(SQLiteDatabase sqLiteDatabase){
+//        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase(); //write to database
 
         ArrayList<String> crop_categories = new ArrayList<String>();
         crop_categories.add("Vegetables");
@@ -142,8 +220,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }//end of insert crop category
 
     //data seeder for crop names
-    public boolean seedCrop(){
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase(); //write to database
+    public boolean seedCrop(SQLiteDatabase sqLiteDatabase){
+//        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase(); //write to database
 
         //array - vegetables
         ArrayList<String> crops_vegetables = new ArrayList<String>();
@@ -241,8 +319,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }//end of insert crop
 
     //seeder - crop variety
-    public boolean seedCropVariety(){
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase(); //write to database
+    public boolean seedCropVariety(SQLiteDatabase sqLiteDatabase){
+//        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase(); //write to database
         boolean result = true;
 
         //array for vegetable varieties
@@ -485,8 +563,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }//end of seed crop variety
 
     //seed land type table
-    public boolean seedLandType(){
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase(); //write to database
+    public boolean seedLandType(SQLiteDatabase sqLiteDatabase){
+//        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase(); //write to database
         boolean result = true;
 
         //array
@@ -519,8 +597,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }//end of seed land type
 
     //data seeder - land address
-    public boolean seedLandAddress(){
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase(); //write to database
+    public boolean seedLandAddress(SQLiteDatabase sqLiteDatabase){
+//        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase(); //write to database
         boolean result = true;
         //land address 1
         ContentValues contentValues = new ContentValues();
@@ -720,7 +798,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     String addressNo = cursor.getString(cursor.getColumnIndex("addressNo"));
                     String street = cursor.getString(cursor.getColumnIndex("street"));
                     String lane = cursor.getString(cursor.getColumnIndex("lane"));
-                    String address = addressNo + street + lane; //concatenate
+                    String address = addressNo + " " + street + " " + lane; //concatenate
                     land_address_list.add(address);
                 } while (cursor.moveToNext());
             }//end of if
