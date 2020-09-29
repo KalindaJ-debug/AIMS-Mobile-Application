@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="104dp"
         android:layout_marginLeft="104dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="92dp"
         android:layout_marginRight="92dp"
         android:text="@string/dataEntry_title"
@@ -22,6 +22,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView13"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,6 +39,7 @@
         android:text="@string/crop_category"
         app:layout_constraintBottom_toTopOf="@+id/spinnerCropCategory"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
@@ -75,16 +77,17 @@
 
     <Button
         android:id="@+id/buttonNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="173dp"
-        android:layout_marginLeft="173dp"
+        android:layout_width="149dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginLeft="130dp"
         android:layout_marginEnd="150dp"
         android:layout_marginRight="150dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="72dp"
         android:text="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
@@ -129,4 +132,47 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="87dp"
+        android:layout_height="96dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginLeft="163dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginRight="162dp"
+        android:layout_marginBottom="44dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonNext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/seed" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="126dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/emblem" />
+
+    <TextView
+        android:id="@+id/textapptitle"
+        android:layout_width="220dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:lineSpacingExtra="10sp"
+        android:text="@string/aims_full"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.272"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
