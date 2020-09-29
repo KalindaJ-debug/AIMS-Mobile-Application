@@ -32,8 +32,27 @@
         <item>Perch</item>
     </string-array>
 
+    <string name="aims_mobile">Agricultural Information Management System</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="farmer">Farmer</string>
+    <string name="field">Field Officer</string>
+    <string name="NIC">Enter NIC</string>
+    <string name="Login">Login with username</string>
+    <string name="Enter_nic">Enter NIC no to proceed</string>
+    <string name="Approval">Approval</string>
+    <string name="Data">Data Entry</string>
 
-
-
+    <string name="farmerFirstName">Farmer First Name</string>
+    <string name="farmerLastName">Farmer Last Name</string>
+    <string name="region">Region</string>
+    <string name="submitDate">Submitted Date</string>
+    <string name="harvestedLand">Harvested Land</string>
+    <string name="Approve">Approve</string>
+    <string name="Deny">Deny</string>
+    <string name="approval">Approval Requests</string>
+    <string name="farmer_details">Farmer Details</string>
+    <string name="districtTable">District Details</string>
+    <string name="action">Action</string>
 
 </resources>

@@ -8,16 +8,25 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".LandDataEntryActivity"></activity>
-        <activity android:name=".DataEntryActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+    android:theme="@style/NoActionBar">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".LandDataEntryActivity"></activity>
+
+        <activity android:name=".DataEntryActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+
+        <activity android:name=".ApprovalDescription"></activity>
+        <activity android:name=".ApprovalMain" ></activity>
+        <activity android:name=".Officer_logged"></activity>
+        <activity android:name=".officer_login" />
+        <activity android:name=".farmer_login" />
+<!--        <activity android:name=".MainActivity">-->
+
     </application>
 
 </manifest>
