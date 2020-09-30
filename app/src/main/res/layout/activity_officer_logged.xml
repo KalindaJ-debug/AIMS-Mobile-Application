@@ -52,13 +52,13 @@
         android:layout_marginRight="156dp"
         android:layout_marginBottom="34dp"
         android:text="@string/Approval"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/button_officer_logged_data_entry"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_officer_logged_data_entry"
         android:layout_width="210dp"
         android:layout_height="69dp"
         android:layout_marginStart="167dp"

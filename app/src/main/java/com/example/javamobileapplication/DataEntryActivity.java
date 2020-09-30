@@ -28,35 +28,11 @@ public class DataEntryActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         //seed crop information to tables
         boolean success = true;
-        success = db.seedCropCategory();
-
-        if(success == false){
-            Toast.makeText(getApplicationContext(), "Error: Failed to Seed Crop Category Data", Toast.LENGTH_LONG).show(); //display error message
-        }
-
-        success = db.seedCrop();
-        if(success == false){
-            Toast.makeText(getApplicationContext(), "Error: Failed to Seed Crop Name Data", Toast.LENGTH_LONG).show(); //display error message
-        }
-
-        success = db.seedCropVariety();
-        if(success == false){
-            Toast.makeText(getApplicationContext(), "Error: Failed to Seed Crop Variety Data", Toast.LENGTH_LONG).show(); //display error message
-        }
-
-        success = db.seedLandType();
-        if(success == false){
-            Toast.makeText(getApplicationContext(), "Error: Failed to Seed Land Type Data", Toast.LENGTH_LONG).show(); //display error message
-        }
-        success = db.seedLandAddress();
-        if(success == false){
-            Toast.makeText(getApplicationContext(), "Error: Failed to Seed Land Address Data", Toast.LENGTH_LONG).show(); //display error message
-        }
 
         //Declarations - Spinners
         Spinner cropCategory = (Spinner) findViewById(R.id.spinnerCropCategory);
         Spinner cropName = (Spinner) findViewById(R.id.spinnerCropName);
-        Spinner cropVariety = (Spinner) findViewById(R.id.spinnerCropVariety);
+        final Spinner cropVariety = (Spinner) findViewById(R.id.spinnerCropVariety);
 
         //spinner - crop category implementation
 
@@ -101,14 +77,16 @@ public class DataEntryActivity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openLandDataEntryActivity();
+                String variety = cropVariety.getSelectedItem().toString();
+                openLandDataEntryActivity(variety);
             }
         });
     } //end of onCreate function
 
     //methods
-    public void openLandDataEntryActivity(){
+    public void openLandDataEntryActivity(String string){
         Intent intent = new Intent(this, LandDataEntryActivity.class);
+        intent.putExtra("crop_variety", string);
         startActivity(intent);
     }//end of open land activity
 

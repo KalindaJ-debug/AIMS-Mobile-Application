@@ -54,5 +54,9 @@
     <string name="farmer_details">Farmer Details</string>
     <string name="districtTable">District Details</string>
     <string name="action">Action</string>
+    <string name="aims_full">Agriculture Information Management System</string>
+    <string name="sucessful">Successfully Submitted Your Culitvated Land Information</string>
+    <string name="data_entry_button">Home</string>
+    <string name="add_more">Add Entry</string>
 
 </resources>

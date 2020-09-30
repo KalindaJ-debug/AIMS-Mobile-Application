@@ -33,7 +33,6 @@ public class LandDataEntryActivity extends AppCompatActivity {
 
         //seed data
 
-
         //Spinner- land measurements
         Spinner landMeasurements = (Spinner) findViewById(R.id.spinnerLand);
 
@@ -60,7 +59,7 @@ public class LandDataEntryActivity extends AppCompatActivity {
         landType.setAdapter(land_types_adapter); //set adapter
 
         //Land Address Spinner
-        Spinner landAddress = (Spinner) findViewById(R.id.spinnerLandAddress);
+        final Spinner landAddress = (Spinner) findViewById(R.id.spinnerLandAddress);
         ArrayList<String> land_address_list = db.getLandAddressList();
 
         //implement adapter
@@ -73,29 +72,17 @@ public class LandDataEntryActivity extends AppCompatActivity {
         landAddress.setAdapter(land_address_adapter);
 
         //Land extent value
-        EditText land_extent = (EditText) findViewById(R.id.editTextLandExtent);
-        String str_landExtent = land_extent.getText().toString();
-//        float le = Float.valueOf(land_extent.getText().toString());
-        float le = parseFloat(str_landExtent);
-//
-//        //selected converter
-        if(landMeasurements.getSelectedItem().toString() == "Rood") {
-            le = (float) (le * 0.1012);
-        }
-        else if(landMeasurements.getSelectedItem().toString() == "Acre"){
-            le = (float) (le * 0.404686);
-        }
-        else if(landMeasurements.getSelectedItem().toString() == "Perch"){
-            le = (float) (le * 0.00252929);
-        }
-        else{
-            le = le;
-        }
+        final EditText land_extent = (EditText) findViewById(R.id.editTextLandExtent);
 
-        //land id
-        final int land_id = 1;
-        final int variety_id = 2;
-        final int lt =  3;
+        final String selected_measurement = landMeasurements.getSelectedItem().toString();
+
+        String selected_land_type = landType.getSelectedItem().toString();
+
+        //set data - dummy data
+
+        String selected_variety = getIntent().getStringExtra("crop_variety");
+        final int variety_id = db.GetVarietyId(selected_variety);
+        final int lt =  db.GetLandTypeId(selected_land_type);
 
         //Button impl - Previous
         btnPrevious = (Button) findViewById(R.id.buttonBack);
@@ -107,34 +94,82 @@ public class LandDataEntryActivity extends AppCompatActivity {
         });
 
         //Button impl - Submit
-//        final float finalLe = le;
-//        final float finalLe1 = le;btnSubmit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                boolean result;
-//                result = db.SetDataEntry(land_id, variety_id, finalLe1, lt);
-//                if(result == false){
-//                    Toast.makeText(getApplicationContext(), "Failed Submit Land Data. Please Try Again", Toast.LENGTH_LONG).show(); //show error message
-//                }//end if
-//            }
-//        });
+
+        btnSubmit = (Button) findViewById(R.id.buttonSubmit);
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final int land_id = landAddress.getSelectedItemPosition();
+                String str_landExtent = land_extent.getText().toString();
+                final double finalLe = parseDouble(str_landExtent);
+                boolean result;
+                double converted_le;
+
+                //check for not selected
+                if(land_id < 0){
+                    Toast.makeText(getApplicationContext(), "Please select land address", Toast.LENGTH_LONG).show(); //show error message
+                }
+                else if(variety_id == 0){
+                    Toast.makeText(getApplicationContext(), "Please enter crop variety details", Toast.LENGTH_LONG).show(); //show error message
+                }
+                else if(finalLe == 0){
+                    Toast.makeText(getApplicationContext(), "Please enter land extent ", Toast.LENGTH_LONG).show(); //show error message
+                }
+                else if(lt == 0){
+                    Toast.makeText(getApplicationContext(), "Please enter land type", Toast.LENGTH_LONG).show(); //show error message
+                }
+                else{
+                    //selected converter
+                    if(selected_measurement == "Rood") {
+                        converted_le = (float) (finalLe * 0.1012);
+                    }
+                    else if(selected_measurement == "Acre"){
+                        converted_le = (float) (finalLe * 0.404686);
+                    }
+                    else if(selected_measurement == "Perch"){
+                        converted_le = (float) (finalLe * 0.00252929);
+                    }
+                    else{
+                        converted_le = finalLe;
+                    }
+
+                    //all data available for data entry
+                    result = db.SetDataEntry(land_id + 1, variety_id, converted_le, lt);
+
+                    if(result == false){
+                        Toast.makeText(getApplicationContext(), "Failed Submit Land Data. Please Try Again", Toast.LENGTH_LONG).show(); //show error message
+                    }//end if
+                    else {
+                        Toast.makeText(getApplicationContext(), "Successfully Submitted Cultivated Data Entry!", Toast.LENGTH_LONG).show(); //show message
+                        openSuccessfulActivity(); //go to success activity
+                    }
+
+                }//end of nested if
+
+            }
+        });
 
     } //end of onCreate method
 
     //Method declaration
+    public void openSuccessfulActivity(){
+        Intent intent = new Intent(this, DataEntrySuccessful.class);
+        startActivity(intent);
+    }//end of method
+
     public void openPreviousActivity(){
         Intent intent = new Intent(this, DataEntryActivity.class);
         startActivity(intent);
     }//end of previous method
 
-    public float parseFloat(String string){
-        float result;
+    public double parseDouble(String string){
+        double result;
         if(string == null || string.isEmpty()){
             result = (float) 0.0;
             return result;
         }
         else{
-            result = Float.parseFloat(string);
+            result = Double.parseDouble(string);
             return result;
         }
     }//end of method
