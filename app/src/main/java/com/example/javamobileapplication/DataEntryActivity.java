@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -30,7 +31,7 @@ public class DataEntryActivity extends AppCompatActivity {
         boolean success = true;
 
         //Declarations - Spinners
-        Spinner cropCategory = (Spinner) findViewById(R.id.spinnerCropCategory);
+        final Spinner cropCategory = (Spinner) findViewById(R.id.spinnerCropCategory);
         Spinner cropName = (Spinner) findViewById(R.id.spinnerCropName);
         final Spinner cropVariety = (Spinner) findViewById(R.id.spinnerCropVariety);
 
@@ -45,6 +46,7 @@ public class DataEntryActivity extends AppCompatActivity {
         crop_category_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         cropCategory.setAdapter(crop_category_adapter);
         //end crop category spinner
+        
 
         String selectedCropCategory = cropCategory.getSelectedItem().toString();
         int selectedCropCategoryID = db.getCropCategoryID(selectedCropCategory);
