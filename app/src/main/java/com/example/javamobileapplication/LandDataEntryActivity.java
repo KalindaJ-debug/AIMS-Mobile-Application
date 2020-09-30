@@ -140,7 +140,8 @@ public class LandDataEntryActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Failed Submit Land Data. Please Try Again", Toast.LENGTH_LONG).show(); //show error message
                     }//end if
                     else {
-                        Toast.makeText(getApplicationContext(), "Successfully Submitted Cultivated Data Entry!", Toast.LENGTH_LONG).show(); //show error message
+                        Toast.makeText(getApplicationContext(), "Successfully Submitted Cultivated Data Entry!", Toast.LENGTH_LONG).show(); //show message
+                        openSuccessfulActivity(); //go to success activity
                     }
 
                 }//end of nested if
@@ -151,6 +152,11 @@ public class LandDataEntryActivity extends AppCompatActivity {
     } //end of onCreate method
 
     //Method declaration
+    public void openSuccessfulActivity(){
+        Intent intent = new Intent(this, DataEntrySuccessful.class);
+        startActivity(intent);
+    }//end of method
+
     public void openPreviousActivity(){
         Intent intent = new Intent(this, DataEntryActivity.class);
         startActivity(intent);
