@@ -1,6 +1,7 @@
 package com.example.javamobileapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,39 +9,110 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.BaseColumns;
+import android.util.Log;
 import android.view.View;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.List;
 
 public class ApprovalMain extends AppCompatActivity {
 
-    private static Context context;
-    private SQLiteDatabase db;
-
-    public static Context getAppContext() {
-        return ApprovalMain.context;
-    }
-
-    ApprovalDBHelper dbHelper = new ApprovalDBHelper(getAppContext());
-
+    ApprovalDBHelper dbHelper = new ApprovalDBHelper();
+    String TAG = "MyApp";
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approval_main);
 
-        //dbHelper.onCreate(db);
-        //SQLiteDatabase db = dbHelper.getReadableDatabase();
+        dbHelper.setTest("TestValue 1");
+        dbHelper.setTestColumn1("Tests Value 2");
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        String approvalId = reference.push().getKey();
+        //Approval approval = new Approval("Nelaka", "Jayasinghe", "Western", "Nawala", "Region 1", "Maha", "10/01/2020", (float) 23.567, (float) 35.6, 1, "Test");
+
+        Approval approval = new Approval();
+
+        approval.setFirstName("Nelaka");
+        approval.setLastName("Jayasinghe");
+        approval.setProvince("Western");
+        approval.setDistrict("Nawala");
+        approval.setRegion("Region 1");
+        approval.setSeason("Maha");
+        approval.setSubmitDate("10/01/2020");
+        approval.setCultivatedAmount((float) 23.567);
+        approval.setHarvestAmount((float) 3.567);
+        approval.setStatus(1);
+        approval.setReason("Test");
+
+        reference.child("Approval").push().setValue(approval);
+
+        //reference.child("test").push().setValue(dbHelper);
+        Log.d(TAG, "Test");
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Approval");
+
+        recyclerView = (RecyclerView) findViewById(R.id.approvalList);
+        new FirebaseDBHelper().readApproval(new FirebaseDBHelper.DataStatus() {
+            @Override
+            public void DataIsLoaded(List<Approval> approvals, List<String> keys) {
+                new RecycleView_Config().setConfig(recyclerView, ApprovalMain.this, approvals, keys);
+            }
+
+            @Override
+            public void DataInserted() {
+
+            }
+
+            @Override
+            public void DataUpdated() {
+
+            }
+
+            @Override
+            public void DataDeleted() {
+
+            }
+        });
+        // Attach a listener to read the data at our posts reference
+//        myRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                ApprovalDBHelper post = dataSnapshot.getValue(ApprovalDBHelper.class);
+//                Log.d(TAG, String.valueOf(post));
+//                System.out.println(post);
+//            }
 //
-//        // Create a new map of values, where column names are the keys
-//        ContentValues values = new ContentValues();
-//        values.put(ApprovalDBHelper.Approval.COLUMN_NAME_FARMER_FIRST_NAME, "Nelaka");
-//        values.put(ApprovalDBHelper.Approval.COLUMN_NAME_FARMER_lAST_NAME, "Jayasinghe");
-//        values.put(ApprovalDBHelper.Approval.COLUMN_NAME_DISTRICT, "Nawala");
-//        values.put(ApprovalDBHelper.Approval.COLUMN_NAME_REGION, "Region 1");
-//        values.put(ApprovalDBHelper.Approval.COLUMN_NAME_SUBMITTED_DATE, "01/08/2020");
-//        values.put(ApprovalDBHelper.Approval.COLUMN_NAME_HARVEST_AMOUNT, "23.45");
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                System.out.println("The read failed: " + databaseError.getCode());
+//            }
+//        });
+//        // Read from the database
+//        myRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                // This method is called once with the initial value and again
+//                // whenever data at this location is updated.
+//                String value = dataSnapshot.getValue(String.class);
+//                Log.d(TAG, "Value is: " + value);
+//            }
 //
-//        // Insert the new row, returning the primary key value of the new row
-//        long newRowId = db.insert(ApprovalDBHelper.Approval.TABLE_NAME, null, values);
+//            @Override
+//            public void onCancelled(DatabaseError error) {
+//                // Failed to read value
+//                Log.w(TAG, "Failed to read value.", error.toException());
+//            }
+//        });
     }
 
     public void proceedActivity1(View view) {
