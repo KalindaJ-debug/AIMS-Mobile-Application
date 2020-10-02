@@ -58,5 +58,11 @@
     <string name="sucessful">Successfully Submitted Your Culitvated Land Information</string>
     <string name="data_entry_button">Home</string>
     <string name="add_more">Add Entry</string>
+    <string name="crop_data_list">Crop Data List</string>
+    <string name="land_data_list">Land Data List</string>
+    <string name="view_data_entry_details">View Data Entry Details</string>
+    <string name="crop_data">Crop Data</string>
+    <string name="land_data">Land Data</string>
+    <string name="data_view">DATA VIEW</string>
 
 </resources>
