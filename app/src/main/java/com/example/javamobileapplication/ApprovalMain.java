@@ -38,25 +38,11 @@ public class ApprovalMain extends AppCompatActivity {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         String approvalId = reference.push().getKey();
         //Approval approval = new Approval("Nelaka", "Jayasinghe", "Western", "Nawala", "Region 1", "Maha", "10/01/2020", (float) 23.567, (float) 35.6, 1, "Test");
-
-        Approval approval = new Approval();
-
-        approval.setFirstName("Nelaka");
-        approval.setLastName("Jayasinghe");
-        approval.setProvince("Western");
-        approval.setDistrict("Nawala");
-        approval.setRegion("Region 1");
-        approval.setSeason("Maha");
-        approval.setSubmitDate("10/01/2020");
-        approval.setCultivatedAmount((float) 23.567);
-        approval.setHarvestAmount((float) 3.567);
-        approval.setStatus(1);
-        approval.setReason("Test");
-
-        reference.child("Approval").push().setValue(approval);
-
         //reference.child("test").push().setValue(dbHelper);
         Log.d(TAG, "Test");
+
+//        FirebaseDBHelper firebaseDBHelper = new FirebaseDBHelper();
+//        firebaseDBHelper.submitData();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Approval");
@@ -115,7 +101,7 @@ public class ApprovalMain extends AppCompatActivity {
 //        });
     }
 
-    public void proceedActivity1(View view) {
+    public void proceedActivity(View view) {
         Intent intent = new Intent(this, ApprovalDescription.class);
         intent.putExtra("farmerFirst", "Nelaka");
         intent.putExtra("farmerLast", "Jayasinghe");
@@ -126,18 +112,7 @@ public class ApprovalMain extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void proceedActivity2(View view) {
-        Intent intent = new Intent(this, ApprovalDescription.class);
-        intent.putExtra("farmerFirst", "Kalinda");
-        intent.putExtra("farmerLast", "Jayasinghe");
-        intent.putExtra("district", "Gampaha");
-        intent.putExtra("region", "Region 2");
-        intent.putExtra("submittedDate", "05/12/2020");
-        intent.putExtra("harvest", "78.123");
-        startActivity(intent);
-    }
-
-    public void nextActivity(View view) {
+    public void descriptionActivity() {
         Intent intent = new Intent(this, ApprovalDescription.class);
         intent.putExtra("farmerFirst", "Nelaka");
         intent.putExtra("farmerLast", "Jayasinghe");
@@ -147,5 +122,4 @@ public class ApprovalMain extends AppCompatActivity {
         intent.putExtra("harvest", "45.897");
         startActivity(intent);
     }
-
 }
