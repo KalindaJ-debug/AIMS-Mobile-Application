@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,16 +37,6 @@ public class ApprovalDescription extends AppCompatActivity {
         btnApprove = (Button) findViewById(R.id.btnApprove);
         btnDeny = (Button) findViewById(R.id.btnDeny);
 
-//        intent.putExtra("farmerFirst", farmerFirstName.getText().toString());
-//        intent.putExtra("farmerLast", farmerLastName.getText().toString());
-//        intent.putExtra("province", province.getText().toString());
-//        intent.putExtra("district", district.getText().toString());
-//        intent.putExtra("region", region.getText().toString());
-//        intent.putExtra("submittedDate", submittedDate.getText().toString());
-//        intent.putExtra("harvestAmount", harvestAmount);
-//        intent.putExtra("cultivatedAmount", cultivatedAmount);
-//        intent.putExtra("season", season);
-//        intent.putExtra("key", key);
         Intent intent = getIntent();
         farmerFirst.setText(intent.getStringExtra("farmerFirst"));
         farmerLast.setText(intent.getStringExtra("farmerLast"));
@@ -139,14 +130,7 @@ public class ApprovalDescription extends AppCompatActivity {
         });
     }
 
-    public void approve(View view){
-        showToast("Application Approved");
-        Intent intent = new Intent(this, ApprovalMain.class);
-        startActivity(intent);
-    }
-
     public void ReasonAcitivity(){
-        showToast("Application Declined");
         Intent intent = new Intent(this, ApprovalReason.class);
         intent.putExtra("farmerFirst", farmerFirst.getText().toString());
         intent.putExtra("farmerLast", farmerLast.getText().toString());
@@ -159,13 +143,5 @@ public class ApprovalDescription extends AppCompatActivity {
         intent.putExtra("season", season.getText().toString());
         intent.putExtra("key", key);
         startActivity(intent);
-    }
-
-    public void showToast(CharSequence text){
-        Context context = getApplicationContext();
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
     }
 }

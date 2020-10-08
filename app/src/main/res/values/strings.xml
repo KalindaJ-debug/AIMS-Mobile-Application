@@ -21,4 +21,6 @@
     <string name="submitted_date">Submitted Date</string>
     <string name="season">Season</string>
     <string name="cultivatedLand">Cultivated Land</string>
+    <string name="reason">Reason</string>
+    <string name="submit">Submit</string>
 </resources>
