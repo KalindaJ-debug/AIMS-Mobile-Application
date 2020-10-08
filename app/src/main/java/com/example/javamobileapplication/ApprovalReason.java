@@ -59,6 +59,8 @@ public class ApprovalReason extends AppCompatActivity {
 
         otherText = (EditText) findViewById(R.id.otherText);
         //disableText();
+        //oivwehgweg
+        enableText();
 
         Intent intent = getIntent();
         this.farmerFirst = intent.getStringExtra("farmerFirst");
