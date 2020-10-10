@@ -41,7 +41,7 @@ public class DataEntryActivity extends AppCompatActivity {
         ArrayList<String> crop_category_list = db.getCropCategory();
         final ArrayAdapter<String> crop_category_adapter = new ArrayAdapter<String>(
                 this,
-                R.layout.support_simple_spinner_dropdown_item,
+                R.layout.spinner_textview,
                 crop_category_list
         ); //end of adapter
         crop_category_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
@@ -55,7 +55,7 @@ public class DataEntryActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 ArrayList<String> temp_list = db.getCropList(db.getCropCategoryID(cropCategory.getSelectedItem().toString()));
-                crop_list_adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, temp_list);
+                crop_list_adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_textview, temp_list);
                 cropName.setAdapter(crop_list_adapter);
             }
 
@@ -68,10 +68,10 @@ public class DataEntryActivity extends AppCompatActivity {
                 ArrayList<String> crop_list = db.getCropList(selectedCropCategoryID);
                 crop_list_adapter = new ArrayAdapter<String>(
                         getApplicationContext(),
-                        R.layout.support_simple_spinner_dropdown_item,
+                        R.layout.spinner_textview,
                         crop_list
                 );//end of adapter
-                crop_list_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+                crop_list_adapter.setDropDownViewResource(R.layout.spinner_textview);
                 cropName.setAdapter(crop_list_adapter);
 
             }
@@ -86,7 +86,7 @@ public class DataEntryActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 ArrayList<String> temp_variety_list = db.getCropVarietyList(db.getCropID(cropName.getSelectedItem().toString()));
-                crop_variety_adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, temp_variety_list);
+                crop_variety_adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_textview, temp_variety_list);
                 cropVariety.setAdapter(crop_variety_adapter);
             }
 
@@ -99,10 +99,10 @@ public class DataEntryActivity extends AppCompatActivity {
                 ArrayList<String> crop_variety_list = db.getCropVarietyList(selectedCropID);
                 crop_variety_adapter = new ArrayAdapter<String>(
                         getApplicationContext(),
-                        R.layout.support_simple_spinner_dropdown_item,
+                        R.layout.spinner_textview,
                         crop_variety_list
                 );//end of adapter
-                crop_variety_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+                crop_variety_adapter.setDropDownViewResource(R.layout.spinner_textview);
                 cropVariety.setAdapter(crop_variety_adapter);
 
             }

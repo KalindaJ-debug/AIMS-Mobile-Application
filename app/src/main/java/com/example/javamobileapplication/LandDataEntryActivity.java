@@ -39,10 +39,10 @@ public class LandDataEntryActivity extends AppCompatActivity {
         //spinner - land measurements implementation
         ArrayAdapter<String> landMeasurementsArray = new ArrayAdapter<String>(
                 LandDataEntryActivity.this,
-                R.layout.support_simple_spinner_dropdown_item,
+                R.layout.spinner_textview,
                 getResources().getStringArray(R.array.land_measurements)
         ); //end of array adapter
-        landMeasurementsArray.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        landMeasurementsArray.setDropDownViewResource(R.layout.spinner_textview);
         landMeasurements.setAdapter(landMeasurementsArray);
 
         //Spinner - Land Types
@@ -52,10 +52,10 @@ public class LandDataEntryActivity extends AppCompatActivity {
         //implement land type spinner
         ArrayAdapter<String> land_types_adapter = new ArrayAdapter<String>(
                 this,
-                R.layout.support_simple_spinner_dropdown_item,
+                R.layout.spinner_textview,
                 land_types_list
         );//end of adapter
-        land_types_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        land_types_adapter.setDropDownViewResource(R.layout.spinner_textview);
         landType.setAdapter(land_types_adapter); //set adapter
 
         //Land Address Spinner
@@ -65,10 +65,10 @@ public class LandDataEntryActivity extends AppCompatActivity {
         //implement adapter
         ArrayAdapter<String> land_address_adapter = new ArrayAdapter<String>(
                 this,
-                R.layout.support_simple_spinner_dropdown_item,
+                R.layout.spinner_textview,
                 land_address_list
         );//end of adapter
-        land_address_adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        land_address_adapter.setDropDownViewResource(R.layout.spinner_textview);
         landAddress.setAdapter(land_address_adapter);
 
         //Land extent value

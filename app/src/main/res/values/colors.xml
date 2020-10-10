@@ -7,4 +7,5 @@
     <color name="sub_bar_green">#2e933c</color>
     <color name="light_green">#81c14b</color>
     <color name="white">#fffefd</color>
+    <color name="text_black">#000</color>
 </resources>
