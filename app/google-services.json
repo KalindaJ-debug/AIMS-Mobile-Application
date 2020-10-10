@@ -1,34 +1,57 @@
 {
   "project_info": {
+<<<<<<< HEAD
     "project_number": "667164057845",
     "firebase_url": "https://java-mobile-application.firebaseio.com",
     "project_id": "java-mobile-application",
     "storage_bucket": "java-mobile-application.appspot.com"
+=======
+    "project_number": "418942795528",
+    "firebase_url": "https://aims-b2f41.firebaseio.com",
+    "project_id": "aims-b2f41",
+    "storage_bucket": "aims-b2f41.appspot.com"
+>>>>>>> f9fc580e07e7d18e8e51ded608e0fbb50648a8a9
   },
   "client": [
     {
       "client_info": {
+<<<<<<< HEAD
         "mobilesdk_app_id": "1:667164057845:android:4cd6ff2b26d47a4ac125bc",
+=======
+        "mobilesdk_app_id": "1:418942795528:android:6b3d142d3d27d6e5eab6bd",
+>>>>>>> f9fc580e07e7d18e8e51ded608e0fbb50648a8a9
         "android_client_info": {
           "package_name": "com.example.javamobileapplication"
         }
       },
       "oauth_client": [
         {
+<<<<<<< HEAD
           "client_id": "667164057845-r03pans0qn1cjfmao4ofsocud9h5b690.apps.googleusercontent.com",
+=======
+          "client_id": "418942795528-p8uou4ld9fo6hgmi4k5sdi02f56ogbtt.apps.googleusercontent.com",
+>>>>>>> f9fc580e07e7d18e8e51ded608e0fbb50648a8a9
           "client_type": 3
         }
       ],
       "api_key": [
         {
+<<<<<<< HEAD
           "current_key": "AIzaSyC2QLYN8dmk0aKYx1vcZsFd_g7Pr7FLkKY"
+=======
+          "current_key": "AIzaSyDYOg_mHXWD0EgFdl7cj78kf89zQwCicHg"
+>>>>>>> f9fc580e07e7d18e8e51ded608e0fbb50648a8a9
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
+<<<<<<< HEAD
               "client_id": "667164057845-r03pans0qn1cjfmao4ofsocud9h5b690.apps.googleusercontent.com",
+=======
+              "client_id": "418942795528-p8uou4ld9fo6hgmi4k5sdi02f56ogbtt.apps.googleusercontent.com",
+>>>>>>> f9fc580e07e7d18e8e51ded608e0fbb50648a8a9
               "client_type": 3
             }
           ]
