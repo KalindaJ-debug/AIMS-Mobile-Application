@@ -60,7 +60,7 @@ public class ApprovalReason extends AppCompatActivity {
         otherText = (EditText) findViewById(R.id.otherText);
         //disableText();
         //oivwehgweg
-        enableText();
+        ///enableText();
 
         Intent intent = getIntent();
         this.farmerFirst = intent.getStringExtra("farmerFirst");
@@ -86,8 +86,14 @@ public class ApprovalReason extends AppCompatActivity {
                 } else if (option3Radio.isChecked()) {
                     updateData("Test Data");
                 }
+                mainActivity();
             }
         });
+    }
+
+    public void mainActivity() {
+        Intent intent1 = new Intent(this, ApprovalMain.class);
+        startActivity(intent1);
     }
 
     public void checkRadioInput(View view) {
