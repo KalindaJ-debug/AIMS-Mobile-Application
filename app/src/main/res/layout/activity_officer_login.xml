@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context=".MainActivity">
+    tools:context=".officer_login"
+    android:background="@drawable/background">
 
     <TextView
         android:id="@+id/textView"
@@ -43,8 +43,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="379dp"
-        android:layout_height="247dp"
+        android:layout_width="355dp"
+        android:layout_height="283dp"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
         android:layout_marginEnd="1dp"
@@ -56,41 +56,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.433"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/textView">>
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="11dp"
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="343dp"
+            android:layout_height="53dp"
             android:layout_weight="1"
-            android:text="@string/farmer"
-            android:textSize="30sp" />
+            android:background="@drawable/question"
+            android:ems="10"
+            android:hint="@string/username"
+            android:inputType="textPersonName" />
+
+        <LinearLayout
+            android:layout_width="311dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"></LinearLayout>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="343dp"
+            android:layout_height="53dp"
+            android:layout_weight="1"
+            android:background="@drawable/question"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/nic_submit"
-            android:layout_width="164dp"
-            android:layout_height="3dp"
+            android:id="@+id/login"
+            android:layout_width="166dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="sendMessage"
-            android:text="@string/NIC" />
+            android:text="@string/submit" />
+    </LinearLayout><![CDATA[>
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="354dp"
-            android:layout_height="9dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@string/field"
-            android:textSize="30sp" />
-
-        <Button
-            android:id="@+id/login_submit"
-            android:layout_width="261dp"
-            android:layout_height="4dp"
-            android:layout_weight="1"
-            android:onClick="changeOfficer"
-            android:text="@string/Login" />
-
-    </LinearLayout>
-
+    ]]>
 </androidx.constraintlayout.widget.ConstraintLayout>
