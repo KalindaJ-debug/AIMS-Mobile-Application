@@ -69,19 +69,21 @@
 
         <EditText
             android:id="@+id/NIC"
-            android:layout_width="335dp"
-            android:layout_height="16dp"
+            android:layout_width="356dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/question"
+            android:background="@drawable/data_entry_button"
             android:ems="10"
             android:hint="@string/NIC"
             android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/nic_submit"
-            android:layout_width="166dp"
-            android:layout_height="wrap_content"
+            android:layout_width="154dp"
+            android:layout_height="14dp"
+            android:layout_marginTop="30px"
             android:layout_weight="1"
+            android:background="@drawable/data_entry_button"
             android:text="@string/NIC" />
 
     </LinearLayout>

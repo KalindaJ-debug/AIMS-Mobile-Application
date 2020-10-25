@@ -71,6 +71,7 @@
             android:layout_width="164dp"
             android:layout_height="3dp"
             android:layout_weight="1"
+            android:background="@drawable/data_entry_button"
             android:onClick="sendMessage"
             android:text="@string/NIC" />
 
@@ -88,6 +89,7 @@
             android:layout_width="261dp"
             android:layout_height="4dp"
             android:layout_weight="1"
+            android:background="@drawable/data_entry_button"
             android:onClick="changeOfficer"
             android:text="@string/Login" />
 

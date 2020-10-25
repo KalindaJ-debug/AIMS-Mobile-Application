@@ -3,6 +3,7 @@ package com.example.javamobileapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -11,8 +12,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import org.apache.http.NameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.util.List;
 
+import Classes.JSONParser;
 import Classes.Users;
 import Database.UserHandler;
 
@@ -21,11 +32,15 @@ public class officer_login extends AppCompatActivity {
     private Button login;
     UserHandler userHandler;
 
+    //make connection with remote database
+    JSONParser jParser = new JSONParser();
+    private static String url_get_users = "http://127.0.0.1:8000/getRegisteredUsers";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_officer_login);
 
+        new ImportAllusers().execute();
         userHandler = new UserHandler(this);
 
         login = findViewById(R.id.login);
@@ -80,5 +95,18 @@ public class officer_login extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    class ImportAllusers extends AsyncTask<String, String, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            JSONObject json = jParser.makeHttpRequest(url_get_users, "GET", params);
+            // Check your log cat for JSON reponse
+            Log.d("All Products: ", json.toString());
+
+            return null;
+        }
     }
 }
