@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context=".MainActivity">
+    tools:context=".farmer_login"
+    android:background="@drawable/background">
 
     <TextView
         android:id="@+id/textView"
@@ -56,40 +56,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.433"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/textView">>
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="11dp"
+            android:layout_width="221dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/farmer"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/Enter_nic"
             android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/NIC"
+            android:layout_width="335dp"
+            android:layout_height="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/question"
+            android:ems="10"
+            android:hint="@string/NIC"
+            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/nic_submit"
-            android:layout_width="164dp"
-            android:layout_height="3dp"
+            android:layout_width="166dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="sendMessage"
             android:text="@string/NIC" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="354dp"
-            android:layout_height="9dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@string/field"
-            android:textSize="30sp" />
-
-        <Button
-            android:id="@+id/login_submit"
-            android:layout_width="261dp"
-            android:layout_height="4dp"
-            android:layout_weight="1"
-            android:onClick="changeOfficer"
-            android:text="@string/Login" />
 
     </LinearLayout>
 
