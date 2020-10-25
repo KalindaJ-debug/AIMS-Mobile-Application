@@ -10,7 +10,7 @@ import android.widget.Button;
 public class Officer_logged extends AppCompatActivity {
 
     Button btnDataEntry;
-    Button btnViewData;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,15 +26,7 @@ public class Officer_logged extends AppCompatActivity {
             }
         });
 
-        //Navigation to View Data Activities
-        btnViewData = (Button) findViewById(R.id.btnViewData);
-        btnViewData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Officer_logged.this, DataViewMain.class);
-                startActivity(intent);
-            }
-        });
+        
     }//end of on create method
 
     //button methods
