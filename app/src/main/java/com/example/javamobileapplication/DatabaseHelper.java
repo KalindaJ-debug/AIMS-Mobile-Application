@@ -815,25 +815,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return land_address_list; //return list
     }//end of method
 
-    // Method for crop data viewing in list
-    // Divyaragavi G.
-    public Cursor viewCropData(){
-        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-
-        String query_crop = "SELECT * FROM "+TABLE_CROP_NAME;
-        Cursor cursor = sqLiteDatabase.rawQuery(query_crop,null);
-
-        return cursor;
-
-    }
-
-    public Cursor viewLandData(){
-        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-
-        String query_land = "SELECT * FROM "+TABLE_LAND_ADDRESS;
-        Cursor cursor = sqLiteDatabase.rawQuery(query_land,null);
-
-        return cursor;
-    }
+    
 
 } //end of database helper class
