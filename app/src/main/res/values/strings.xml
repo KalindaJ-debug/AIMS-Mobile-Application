@@ -21,6 +21,7 @@
     <string name="landTitle">Enter Cultivated Land Details</string>
     <string name="landType">Select Land Type</string>
     <string name="Previous">Previous</string>
+    <string name="Land_Data">Land Data</string>
 
     <!--    Data Entry Activity String Arrays-->
 

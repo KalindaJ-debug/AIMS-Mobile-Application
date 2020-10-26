@@ -42,6 +42,7 @@ public class JSONParser {
                 HttpResponse httpResponse = httpClient.execute(httpPost);
                 HttpEntity httpEntity = httpResponse.getEntity();
                 is = httpEntity.getContent();
+                Log.d("All Products: ", "This is sparta working hello");
             }else if(method == "GET"){
                 // request method is GET
                 DefaultHttpClient httpClient = new DefaultHttpClient();
@@ -51,6 +52,7 @@ public class JSONParser {
                 HttpResponse httpResponse = httpClient.execute(httpGet);
                 HttpEntity httpEntity = httpResponse.getEntity();
                 is = httpEntity.getContent();
+
             }
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -60,6 +62,7 @@ public class JSONParser {
             e.printStackTrace();
         }
         try {
+            Log.d("All Products: ", "This is sparta working");
             BufferedReader reader = new BufferedReader(new InputStreamReader(
                     is, "iso-8859-1"), 8);
             StringBuilder sb = new StringBuilder();
@@ -69,6 +72,7 @@ public class JSONParser {
             }
             is.close();
             json = sb.toString();
+            Log.d("All Products: ", "This is sparta working"+sb.toString());
         } catch (Exception e) {
             Log.e("Buffer Error", "Error converting result " + e.toString());
         }
