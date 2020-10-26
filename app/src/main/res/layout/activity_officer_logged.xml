@@ -42,7 +42,7 @@
         app:srcCompat="@drawable/emblem2" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/approvalButton"
         android:layout_width="210dp"
         android:layout_height="69dp"
         android:layout_marginStart="167dp"

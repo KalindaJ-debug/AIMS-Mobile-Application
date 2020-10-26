@@ -16,7 +16,6 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,23 +26,24 @@ import java.util.List;
 
 import Classes.JSONParser;
 
-
-public class Farmer_Land extends ListActivity {
+public class Approval_List extends ListActivity {
 
     private ProgressDialog pDialog;
     // Creating JSON Parser object
     JSONParser jParser = new JSONParser();
     ArrayList<HashMap<String, String>> productsList;
     // url to get all products list
-    private static String url_all_lands = "http://192.168.1.8:8000/getLand";
+    private static String url_all_lands = "http://192.168.1.8:8000/getAllApproval";
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
-    private static final String TAG_LANDS = "land";
-    private static final String TAG_LID = "lid";
-    private static final String TAG_ADDRESS = "address";
-    private static final String TAG_FID = "fid";
-    private static final String TAG_LANE = "streetName";
-    private static final String TAG_TOWN = "town";
+    private static final String TAG_AID = "aid";
+    private static final String TAG_APPROVAL = "approval";
+    private static final String TAG_LAND = "land_id";
+    private static final String TAG_VARIETY = "variety_id";
+    private static final String TAG_SEASON = "season";
+    private static final String TAG_HARVEST = "harvestedAmount";
+    private static final String TAG_CULTLAND = "cultivatedLand";
+
 
     // products JSONArray
     JSONArray lands = null;
@@ -52,31 +52,30 @@ public class Farmer_Land extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_farmer__land);;
+        setContentView(R.layout.activity_approval__list);;
         // Hashmap for ListView
         productsList = new ArrayList<HashMap<String, String>>();
 
         // Loading products in Background Thread
-        new LoadAllLand().execute();
+        new LoadAllApproval().execute();
         // Get listview
         ListView lv = getListView();
 
-        // on seleting single product
+        // on selecting single product
         // launching Edit Product Screen
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 // getting values from selected ListItem
-                String lid = ((TextView) view.findViewById(R.id.lid)).getText()
+                String aid = ((TextView) view.findViewById(R.id.lid)).getText()
                         .toString();
                 String fid = getIntent().getStringExtra("id");
                 // Starting new intent
                 Intent in = new Intent(getApplicationContext(),
-                        DataEntryActivity.class);
+                        Approve_Data.class);
                 // sending pid to next activity
-                in.putExtra(TAG_LID, lid);
-                in.putExtra(TAG_FID, fid);
+                in.putExtra(TAG_AID, aid);
                 // starting new activity and expecting some response back
                 startActivityForResult(in, 100);
             }
@@ -97,13 +96,13 @@ public class Farmer_Land extends ListActivity {
         }
     }
 
-    class LoadAllLand extends AsyncTask<String, String, String> {
+    class LoadAllApproval extends AsyncTask<String, String, String> {
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(Farmer_Land.this);
-            pDialog.setMessage("Loading products. Please wait...");
+            pDialog = new ProgressDialog(Approval_List.this);
+            pDialog.setMessage("Loading Approval. Please wait...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
             pDialog.show();
@@ -114,33 +113,39 @@ public class Farmer_Land extends ListActivity {
         protected String doInBackground(String... args) {
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("username", getIntent().getStringExtra("id")));
             // getting JSON string from URL
-            JSONObject json = jParser.makeHttpRequest(url_all_lands, "POST", params);
+            JSONObject json = jParser.makeHttpRequest(url_all_lands, "GET", params);
             // Check your log cat for JSON response
-            Log.d("All Land : ", json.toString());
+            Log.d("All Approval : ", json.toString());
             try {
                 // Checking for SUCCESS TAG
-                int success = 1;
+                int success = json.getInt(TAG_SUCCESS);
+                String message = json.getString("message");
                 if (success == 1) {
                     // products found
                     // Getting Array of Products
-                    lands = json.getJSONArray(TAG_LANDS);
+                    lands = json.getJSONArray("approval");
                     // looping through All Products
                     for (int i = 0; i < lands.length(); i++) {
                         JSONObject c = lands.getJSONObject(i);
                         // Storing each json item in variable
                         String id = c.getString("id");
-                        String streetName = c.getString("streetName");
-                        String laneName = c.getString("laneName");
-                        String town = c.getString("town");
+                        String land_id = c.getString("land_id");
+                        String variety_id = c.getString("variety_id");
+                        String season = c.getString("season");
+                        String harvestedAmount = c.getString("harvestedAmount");
+                        String cultivatedAmount = c.getString("cultivatedLand");
+
                         // creating new HashMap
                         HashMap<String, String> map = new HashMap<String, String>();
                         // adding each child node to HashMap key => value
-                        map.put(TAG_LID, id);
-                        map.put(TAG_ADDRESS, streetName);
-                        map.put(TAG_LANE, laneName);
-                        map.put(TAG_TOWN, town);
+                        map.put(TAG_AID, id);
+                        map.put(TAG_LAND, land_id);
+                        map.put(TAG_VARIETY, variety_id);
+                        map.put(TAG_SEASON, season);
+                        map.put(TAG_HARVEST, harvestedAmount);
+                        map.put(TAG_CULTLAND, cultivatedAmount);
+
                         // adding HashList to ArrayList
                         productsList.add(map);
                     }
@@ -166,14 +171,13 @@ public class Farmer_Land extends ListActivity {
             runOnUiThread(new Runnable() {
                 public void run() {
                     ListAdapter adapter = new SimpleAdapter(
-                            Farmer_Land.this, productsList,
-                            R.layout.list_item, new String[] { TAG_LID,
-                            TAG_ADDRESS, TAG_LANE, TAG_TOWN},
-                            new int[] { R.id.lid, R.id.address, R.id.lane, R.id.town });
+                            Approval_List.this, productsList,
+                            R.layout.list_approval, new String[] { TAG_AID,
+                            TAG_LAND, TAG_VARIETY, TAG_SEASON, TAG_HARVEST, TAG_CULTLAND },
+                            new int[] { R.id.lid, R.id.land, R.id.variety, R.id.season, R.id.harvest, R.id.cult });
                     setListAdapter(adapter);
                 }
             });
         }
     }
-
 }

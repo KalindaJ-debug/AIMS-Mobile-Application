@@ -139,7 +139,7 @@ public class farmer_login extends AppCompatActivity {
                 if (success == 1) {
                     // successfully created product
                     Toast.makeText(farmer_login.this, message , Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), Officer_logged.class);
+                    Intent i = new Intent(getApplicationContext(), Farmer_Land.class);
                     i.putExtra("id", json.getString(TAG_ID));
 
                     startActivity(i);

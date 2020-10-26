@@ -10,7 +10,7 @@ import android.widget.Button;
 public class Officer_logged extends AppCompatActivity {
 
     Button btnDataEntry;
-
+    Button approvalButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,12 +24,25 @@ public class Officer_logged extends AppCompatActivity {
                 Officer_logged.this.openDataEntryActivity();
             }
         });
+
+        approvalButton = (Button) findViewById(R.id.approvalButton);
+        btnDataEntry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Officer_logged.this.openApprovalActivity();
+            }
+        });
     }//end of on create method
 
     //button methods
     public void openDataEntryActivity(){
         Intent intent = new Intent(this, DataEntryActivity.class);
         startActivity(intent);
+    }//end of method
+
+    public void openApprovalActivity(){
+        Intent i = new Intent(getApplicationContext(), Approval_List.class);
+        startActivity(i);
     }//end of method
 
 }

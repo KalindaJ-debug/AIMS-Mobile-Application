@@ -18,7 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Farmer_Land"></activity>
+        <activity android:name=".Approve_Data"></activity>
+        <activity android:name=".Approval_List" />
+        <activity android:name=".Farmer_Land" />
         <activity android:name=".DataEntrySuccessful" />
         <activity android:name=".LandDataEntryActivity" />
         <activity android:name=".MainActivity">

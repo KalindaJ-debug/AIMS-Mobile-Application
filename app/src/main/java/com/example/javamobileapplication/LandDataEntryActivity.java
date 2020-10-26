@@ -2,8 +2,11 @@ package com.example.javamobileapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -11,7 +14,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.List;
+
+import Classes.JSONParser;
+
 
 public class LandDataEntryActivity extends AppCompatActivity {
 
@@ -20,9 +32,21 @@ public class LandDataEntryActivity extends AppCompatActivity {
     //Buttons
     Button btnPrevious; //previous button
     Button btnSubmit; //submit button
+    private ProgressDialog pDialog;
 
+    String land_id;
+    String farmer_id;
+    String selected_variety;
+    String amount;
+    double converted_le;
+    int variety_id;
+
+    JSONObject json = new JSONObject();
+    //make connection with remote database
+    JSONParser jParser = new JSONParser();
     //Database
     DatabaseHelper db;
+    private static String  url_add_cultivation = "http://192.168.1.8:8000/addCulti";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +104,10 @@ public class LandDataEntryActivity extends AppCompatActivity {
 
         //set data - dummy data
 
-        String selected_variety = getIntent().getStringExtra("crop_variety");
-        final int variety_id = db.GetVarietyId(selected_variety);
+        selected_variety = getIntent().getStringExtra("crop_variety");
+        farmer_id = getIntent().getStringExtra("fid");
+        land_id = getIntent().getStringExtra("lid");
+        variety_id = db.GetVarietyId(selected_variety);
         final int lt =  db.GetLandTypeId(selected_land_type);
 
         //Button impl - Previous
@@ -103,7 +129,10 @@ public class LandDataEntryActivity extends AppCompatActivity {
                 String str_landExtent = land_extent.getText().toString();
                 final double finalLe = parseDouble(str_landExtent);
                 boolean result;
-                double converted_le;
+
+                EditText amountWhole = findViewById(R.id.crop);
+                amount = amountWhole.getText().toString();
+                Log.d("hello", amount);
 
                 //check for not selected
                 if(land_id < 0){
@@ -133,16 +162,8 @@ public class LandDataEntryActivity extends AppCompatActivity {
                         converted_le = finalLe;
                     }
 
-                    //all data available for data entry
-                    result = db.SetDataEntry(land_id + 1, variety_id, converted_le, lt);
-
-                    if(result == false){
-                        Toast.makeText(getApplicationContext(), "Failed Submit Land Data. Please Try Again", Toast.LENGTH_LONG).show(); //show error message
-                    }//end if
-                    else {
-                        Toast.makeText(getApplicationContext(), "Successfully Submitted Cultivated Data Entry!", Toast.LENGTH_LONG).show(); //show message
-                        openSuccessfulActivity(); //go to success activity
-                    }
+                    //start ASynchronous activity
+                    new AddCultivation().execute();
 
                 }//end of nested if
 
@@ -150,6 +171,64 @@ public class LandDataEntryActivity extends AppCompatActivity {
         });
 
     } //end of onCreate method
+
+    class AddCultivation extends AsyncTask<String, String, String> {
+
+        /**
+         * Before starting background thread Show Progress Dialog
+         */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(LandDataEntryActivity.this);
+            pDialog.setMessage("Adding Data. Please wait...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+            pDialog.dismiss();
+        }
+
+
+        @Override
+        protected String doInBackground(String... strings) {
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("fid", farmer_id));
+            params.add(new BasicNameValuePair("lid", land_id));
+            params.add(new BasicNameValuePair("amount", amount));
+            params.add(new BasicNameValuePair("extent", String.valueOf(converted_le)));
+            params.add(new BasicNameValuePair("variety", String.valueOf(variety_id)));
+
+
+            json = jParser.makeHttpRequest(url_add_cultivation,
+                    "POST", params);
+
+            Log.d("All Cultivation: ", json.toString());
+
+            return null;
+        }
+
+        protected void onPostExecute(String file_url) {
+            // dismiss the dialog once done
+            try {
+                int success = json.getInt("success");
+                String message = json.getString("message");
+                if (success == 1) {
+                    // successfully created product
+                    Toast.makeText(LandDataEntryActivity.this, message , Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(getApplicationContext(), DataEntrySuccessful.class);
+
+                    startActivity(i);
+                    // closing this screen
+                    finish();
+                } else {
+                    Toast.makeText(LandDataEntryActivity.this, message , Toast.LENGTH_SHORT).show();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            pDialog.dismiss();
+        }
+    }
 
     //Method declaration
     public void openSuccessfulActivity(){
@@ -159,6 +238,8 @@ public class LandDataEntryActivity extends AppCompatActivity {
 
     public void openPreviousActivity(){
         Intent intent = new Intent(this, DataEntryActivity.class);
+        intent.putExtra("fid", getIntent().getStringExtra("fid"));
+        intent.putExtra("lid", getIntent().getStringExtra("lid"));
         startActivity(intent);
     }//end of previous method
 

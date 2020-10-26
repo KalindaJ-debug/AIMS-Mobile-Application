@@ -7,6 +7,24 @@
     android:background="@drawable/background"
     tools:context=".LandDataEntryActivity">
 
+    <EditText
+        android:id="@+id/crop"
+        android:layout_width="123dp"
+        android:layout_height="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="53dp"
+        android:layout_marginTop="560dp"
+        android:layout_marginEnd="223dp"
+        android:layout_marginRight="223dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="@string/KG"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp" />
+
     <TextView
         android:id="@+id/textlandtitle"
         android:layout_width="271dp"
@@ -87,6 +105,19 @@
         android:fontFamily="@font/raleway_semibold"
         android:text="@string/land_extent" />
 
+    <TextView
+        android:id="@+id/textlandextent2"
+        android:layout_width="122dp"
+        android:layout_height="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="518dp"
+        android:layout_marginEnd="225dp"
+        android:layout_marginRight="225dp"
+        android:fontFamily="@font/raleway_semibold"
+        android:text="@string/Amount" />
+
     <EditText
         android:id="@+id/editTextLandExtent"
         android:layout_width="123dp"
@@ -165,14 +196,4 @@
         android:text="@string/aims_full"
         android:textSize="20sp" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="200dp"
-        android:layout_marginTop="530dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="110dp"
-        app:srcCompat="@drawable/ecology" />
 </RelativeLayout>

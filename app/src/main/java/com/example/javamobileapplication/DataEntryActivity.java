@@ -125,6 +125,8 @@ public class DataEntryActivity extends AppCompatActivity {
     //methods
     public void openLandDataEntryActivity(String string){
         Intent intent = new Intent(this, LandDataEntryActivity.class);
+        intent.putExtra("fid", getIntent().getStringExtra("fid"));
+        intent.putExtra("lid", getIntent().getStringExtra("lid"));
         intent.putExtra("crop_variety", string);
         startActivity(intent);
     }//end of open land activity
