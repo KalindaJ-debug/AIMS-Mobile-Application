@@ -37,8 +37,8 @@ public class Approve_Data extends AppCompatActivity  {
     JSONParser jParser = new JSONParser();
     ArrayList<HashMap<String, String>> productsList;
     // url to get all products list
-    private static String url_approval = "http://ec2-54-210-97-143.compute-1.amazonaws.com/getApproval";
-    private static String url_approve = "http://ec2-54-210-97-143.compute-1.amazonaws.com/ApproveData";
+    private static String url_approval = "http://ec2-34-238-53-95.compute-1.amazonaws.com/getApproval";
+    private static String url_approve = "http://ec2-34-238-53-95.compute-1.amazonaws.com/ApproveData";
 
     // JSON Node names
     private static final String TAG_SUCCESS = "success";

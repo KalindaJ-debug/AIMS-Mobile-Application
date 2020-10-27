@@ -49,7 +49,7 @@ public class officer_login extends AppCompatActivity {
 
     //make connection with remote database
     JSONParser jParser = new JSONParser();
-    private static String url_check_login = "http://ec2-54-210-97-143.compute-1.amazonaws.com/getRegisteredUsers";
+    private static String url_check_login = "http://ec2-34-238-53-95.compute-1.amazonaws.com/getRegisteredUsers";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

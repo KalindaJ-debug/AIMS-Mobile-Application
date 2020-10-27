@@ -46,7 +46,7 @@ public class LandDataEntryActivity extends AppCompatActivity {
     JSONParser jParser = new JSONParser();
     //Database
     DatabaseHelper db;
-    private static String  url_add_cultivation = "http://ec2-54-210-97-143.compute-1.amazonaws.com/addCulti";
+    private static String  url_add_cultivation = "http://ec2-34-238-53-95.compute-1.amazonaws.com/addCulti";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

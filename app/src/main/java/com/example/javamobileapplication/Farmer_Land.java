@@ -35,7 +35,7 @@ public class Farmer_Land extends ListActivity {
     JSONParser jParser = new JSONParser();
     ArrayList<HashMap<String, String>> productsList;
     // url to get all products list
-    private static String url_all_lands = "http://ec2-54-210-97-143.compute-1.amazonaws.com/getLand";
+    private static String url_all_lands = "http://ec2-34-238-53-95.compute-1.amazonaws.com/getLand";
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_LANDS = "land";
