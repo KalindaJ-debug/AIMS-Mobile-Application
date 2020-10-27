@@ -10,8 +10,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="411dp"
-        android:layout_height="324dp"
+        android:layout_width="408dp"
+        android:layout_height="303dp"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
@@ -36,8 +36,8 @@
 
             <TextView
                 android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="168dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Approval Details"
@@ -47,57 +47,57 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/name"
-        android:layout_width="144dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="88dp"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.535"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/address"
-        android:layout_width="144dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="88dp"
+        android:id="@+id/firstName"
+        android:layout_width="398dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="50dp"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.02" />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="400dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="88dp"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintVertical_bias="0.249" />
+        app:layout_constraintVertical_bias="0.106" />
 
     <TextView
         android:id="@+id/crop"
-        android:layout_width="144dp"
-        android:layout_height="37dp"
+        android:layout_width="403dp"
+        android:layout_height="48dp"
         android:layout_marginTop="88dp"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintVertical_bias="0.498" />
+        app:layout_constraintVertical_bias="0.321" />
 
     <TextView
         android:id="@+id/extent"
-        android:layout_width="144dp"
-        android:layout_height="37dp"
+        android:layout_width="398dp"
+        android:layout_height="48dp"
         android:layout_marginTop="88dp"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintVertical_bias="0.715" />
+        app:layout_constraintVertical_bias="0.538" />
 
     <Button
         android:id="@+id/approve_btn"
@@ -106,8 +106,8 @@
         android:text="@string/Approve"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintVertical_bias="0.955" />
+        app:layout_constraintVertical_bias="0.87" />
 </androidx.constraintlayout.widget.ConstraintLayout>

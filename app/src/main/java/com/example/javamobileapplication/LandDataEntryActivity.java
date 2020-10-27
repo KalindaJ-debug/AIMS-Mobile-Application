@@ -37,7 +37,7 @@ public class LandDataEntryActivity extends AppCompatActivity {
     String land_id;
     String farmer_id;
     String selected_variety;
-    String amount;
+    Double amount;
     double converted_le;
     int variety_id;
 
@@ -46,7 +46,7 @@ public class LandDataEntryActivity extends AppCompatActivity {
     JSONParser jParser = new JSONParser();
     //Database
     DatabaseHelper db;
-    private static String  url_add_cultivation = "http://192.168.1.8:8000/addCulti";
+    private static String  url_add_cultivation = "http://ec2-54-210-97-143.compute-1.amazonaws.com/addCulti";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,8 +131,7 @@ public class LandDataEntryActivity extends AppCompatActivity {
                 boolean result;
 
                 EditText amountWhole = findViewById(R.id.crop);
-                amount = amountWhole.getText().toString();
-                Log.d("hello", amount);
+                amount = parseDouble(amountWhole.getText().toString());
 
                 //check for not selected
                 if(land_id < 0){
@@ -146,6 +145,9 @@ public class LandDataEntryActivity extends AppCompatActivity {
                 }
                 else if(lt == 0){
                     Toast.makeText(getApplicationContext(), "Please enter land type", Toast.LENGTH_LONG).show(); //show error message
+                }
+                else if(amount == 0){
+                    Toast.makeText(getApplicationContext(), "Please enter amount", Toast.LENGTH_LONG).show(); //show error message
                 }
                 else{
                     //selected converter
@@ -194,7 +196,7 @@ public class LandDataEntryActivity extends AppCompatActivity {
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("fid", farmer_id));
             params.add(new BasicNameValuePair("lid", land_id));
-            params.add(new BasicNameValuePair("amount", amount));
+            params.add(new BasicNameValuePair("amount", amount.toString()));
             params.add(new BasicNameValuePair("extent", String.valueOf(converted_le)));
             params.add(new BasicNameValuePair("variety", String.valueOf(variety_id)));
 

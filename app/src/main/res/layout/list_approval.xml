@@ -15,12 +15,13 @@
         android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Land ID :" />
+        android:text="Name :" />
 
     <TextView
         android:id="@+id/land"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:paddingLeft="6dip"
         android:paddingTop="6dip"
         android:textSize="17dip"
@@ -36,7 +37,7 @@
         android:id="@+id/variety"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        />
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/textView7"
@@ -48,30 +49,30 @@
         android:id="@+id/season"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        />
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Harvest:" />
+        android:text="Address No:" />
 
     <TextView
         android:id="@+id/harvest"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        />
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cultivation ID:" />
+        android:text="Street Name:" />
 
     <TextView
         android:id="@+id/cult"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        />
+        android:gravity="center" />
 
 </LinearLayout>

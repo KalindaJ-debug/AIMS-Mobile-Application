@@ -39,12 +39,12 @@ public class DataEntrySuccessful extends AppCompatActivity {
     } //end of on create method
 
     public void openHomeActivity(){
-        Intent intent = new Intent(this, Officer_logged.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }//end of method
 
     public void openAddActivity(){
-        Intent intent = new Intent(this, DataEntryActivity.class);
+        Intent intent = new Intent(this, Farmer_Land.class);
         startActivity(intent);
     }//end of method
 

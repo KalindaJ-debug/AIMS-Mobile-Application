@@ -33,7 +33,7 @@ public class Approval_List extends ListActivity {
     JSONParser jParser = new JSONParser();
     ArrayList<HashMap<String, String>> productsList;
     // url to get all products list
-    private static String url_all_lands = "http://192.168.1.8:8000/getAllApproval";
+    private static String url_all_lands = "http://ec2-54-210-97-143.compute-1.amazonaws.com/getAllApproval";
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_AID = "aid";
@@ -130,18 +130,18 @@ public class Approval_List extends ListActivity {
                         JSONObject c = lands.getJSONObject(i);
                         // Storing each json item in variable
                         String id = c.getString("id");
-                        String land_id = c.getString("land_id");
                         String variety_id = c.getString("variety_id");
+                        String firstName = c.getString("firstName");
                         String season = c.getString("season");
-                        String harvestedAmount = c.getString("harvestedAmount");
-                        String cultivatedAmount = c.getString("cultivatedLand");
+                        String harvestedAmount = c.getString("addressNo");
+                        String cultivatedAmount = c.getString("streetName");
 
                         // creating new HashMap
                         HashMap<String, String> map = new HashMap<String, String>();
                         // adding each child node to HashMap key => value
                         map.put(TAG_AID, id);
-                        map.put(TAG_LAND, land_id);
-                        map.put(TAG_VARIETY, variety_id);
+                        map.put(TAG_LAND, variety_id);
+                        map.put(TAG_VARIETY, firstName);
                         map.put(TAG_SEASON, season);
                         map.put(TAG_HARVEST, harvestedAmount);
                         map.put(TAG_CULTLAND, cultivatedAmount);
@@ -173,7 +173,7 @@ public class Approval_List extends ListActivity {
                     ListAdapter adapter = new SimpleAdapter(
                             Approval_List.this, productsList,
                             R.layout.list_approval, new String[] { TAG_AID,
-                            TAG_LAND, TAG_VARIETY, TAG_SEASON, TAG_HARVEST, TAG_CULTLAND },
+                            TAG_VARIETY, TAG_LAND, TAG_SEASON, TAG_HARVEST, TAG_CULTLAND },
                             new int[] { R.id.lid, R.id.land, R.id.variety, R.id.season, R.id.harvest, R.id.cult });
                     setListAdapter(adapter);
                 }
